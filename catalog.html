@@ -3,25 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Каталог товаров учебного интернет-магазина с блоком фильтров.">
-  <title>Каталог товаров — Учебный интернет-магазин</title>
+  <meta name="description" content="Каталог инструментов — Резонанс">
+  <title>Каталог инструментов — Резонанс</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/music.css?v=1">
+  <script defer src="js/data.js?v=1"></script>
+  <script defer src="js/store.js?v=1"></script>
 </head>
 <body>
   <header class="site-header">
     <div class="site-header__inner">
-      <a class="site-header__logo" href="index.html">ShopProject</a>
+      <a class="site-header__logo" href="index.html"><span class="brand-mark" aria-hidden="true">Р</span> РЕЗОНАНС</a>
 
       <nav class="site-nav" aria-label="Основная навигация">
        <ul class="site-nav__list">
   <li class="site-nav__item"><a class="site-nav__link" href="index.html">Главная</a></li>
   <li class="site-nav__item"><a class="site-nav__link site-nav__link--active" href="catalog.html" aria-current="page">Каталог</a></li>
-  <li class="site-nav__item"><a class="site-nav__link" href="product.html">Товар</a></li>
+  <li class="site-nav__item"><a class="site-nav__link" href="product.html">Инструмент</a></li>
   <li class="site-nav__item"><a class="site-nav__link" href="order.html">Заявка</a></li>
   <li class="site-nav__item"><a class="site-nav__link" href="contacts.html">Контакты</a></li>
   <li class="site-nav__item"><a class="site-nav__link" href="index.html#popular">Популярные товары</a></li>
-  <li class="site-nav__item"><a class="site-nav__link" href="index.html#contacts">Обратная связь</a></li>
+  <li class="site-nav__item"><a class="site-nav__link" href="index.html#contacts">Связаться</a></li>
 </ul>
       </nav>
     </div>
@@ -33,9 +36,9 @@
       <span class="breadcrumbs__current">Каталог</span>
     </nav>
 
-    <section class="section">
-      <h1 class="section__title">Каталог товаров</h1>
-      <p>Учебный каталог товаров. Фильтры пока работают как статическая разметка.</p>
+    <section class="section catalog-intro">
+      <h1 class="section__title">Каталог инструментов</h1>
+      <p>Выберите категорию или задайте диапазон цен.</p>
     </section>
 
     <section class="catalog-layout">
@@ -45,21 +48,10 @@
         <form class="filters-form" action="#" method="get">
           <fieldset class="filters-form__group">
             <legend class="filters-form__legend">Категория</legend>
-
-            <label class="filters-form__label">
-              <input type="checkbox" name="category" value="all">
-              Все товары
-            </label>
-
-            <label class="filters-form__label">
-              <input type="checkbox" name="category" value="popular">
-              Популярные
-            </label>
-
-            <label class="filters-form__label">
-              <input type="checkbox" name="category" value="new">
-              Новинки
-            </label>
+            <label class="filters-form__label"><input type="checkbox" name="category" value="strings"> Струнные</label>
+            <label class="filters-form__label"><input type="checkbox" name="category" value="keys"> Клавишные</label>
+            <label class="filters-form__label"><input type="checkbox" name="category" value="drums"> Ударные</label>
+            <label class="filters-form__label"><input type="checkbox" name="category" value="winds"> Духовые</label>
           </fieldset>
 
           <fieldset class="filters-form__group">
@@ -69,127 +61,229 @@
             <input class="filters-form__input" id="price-from" name="price-from" type="number" min="0" placeholder="0">
 
             <label class="filters-form__label" for="price-to">До</label>
-            <input class="filters-form__input" id="price-to" name="price-to" type="number" min="0" placeholder="5000">
+            <input class="filters-form__input" id="price-to" name="price-to" type="number" min="0" placeholder="60000">
           </fieldset>
 
           <button class="button button--primary" type="submit">Применить</button>
+          <button class="button button--secondary" type="reset">Сбросить</button>
         </form>
       </aside>
 
       <section class="catalog-products">
-        <h2 class="catalog-products__title">Список товаров</h2>
-        <div class="products-grid">
-          <article class="product-card product-card--featured">
-            <span class="product-card__badge product-card__badge--hit">Хит</span>
-            <h3 class="product-card__title">Товар 1</h3>
-            <p class="product-card__description">Краткое описание учебного товара.</p>
-            <p class="product-card__price">Цена: 1000 руб.</p>
-            <a class="button button--primary product-card__button" href="product.html">Подробнее</a>
+        <h2 class="catalog-products__title">Все инструменты</h2>
+        <p id="catalog-count" role="status">12 инструментов</p>
+        <div class="products-grid" id="catalog-grid">
+          <article class="product-card instrument-card" data-category="strings" data-price="18900">
+            <picture class="instrument-picture">
+                  <img src="images/acoustic-320.webp"
+                  srcset="images/acoustic-320.webp 320w, images/acoustic-512.webp 512w"
+                  sizes="(min-width: 1024px) 250px, (min-width: 768px) 33vw, calc(100vw - 32px)"
+                    alt="Акустическая гитара Folk D1" width="320" height="320" loading="lazy" decoding="async">
+                </picture>
+            <div class="instrument-card__body">
+              <p class="instrument-card__category">Струнные · В наличии</p>
+              <h3 class="product-card__title">Акустическая гитара Folk D1</h3>
+              <p class="product-card__description">6 струн · корпус дредноут</p>
+              <p class="product-card__price">18 900 ₽</p>
+              <a class="button button--secondary product-card__button" href="product.html?item=acoustic" aria-label="Подробнее: Акустическая гитара Folk D1">Подробнее</a>
+            </div>
           </article>
-
-          <article class="product-card product-card--discount">
-            <span class="product-card__badge">Скидка</span>
-            <h3 class="product-card__title">Товар 2</h3>
-            <p class="product-card__description">Краткое описание учебного товара.</p>
-            <p class="product-card__price">
-              Цена: 1200 руб.
-              <s class="product-card__old-price">1500 руб.</s>
-            </p>
-            <a class="button button--primary product-card__button" href="product.html">Подробнее</a>
+          <article class="product-card instrument-card" data-category="strings" data-price="27965">
+            <picture class="instrument-picture">
+                  <img src="images/electric-320.webp"
+                  srcset="images/electric-320.webp 320w, images/electric-512.webp 512w"
+                  sizes="(min-width: 1024px) 250px, (min-width: 768px) 33vw, calc(100vw - 32px)"
+                    alt="Электрогитара Studio ST" width="320" height="320" loading="lazy" decoding="async">
+                </picture>
+            <div class="instrument-card__body">
+              <p class="instrument-card__category">Струнные · В наличии</p>
+              <h3 class="product-card__title">Электрогитара Studio ST</h3>
+              <p class="product-card__description">6 струн · 3 звукоснимателя</p>
+              <p class="product-card__price">27 965 ₽ <s>32 900 ₽</s></p>
+              <a class="button button--secondary product-card__button" href="product.html?item=electric" aria-label="Подробнее: Электрогитара Studio ST">Подробнее</a>
+            </div>
           </article>
-
-          <article class="product-card product-card--new">
-            <span class="product-card__badge product-card__badge--new">Новинка</span>
-            <h3 class="product-card__title">Товар 3</h3>
-            <p class="product-card__description">Краткое описание учебного товара.</p>
-            <p class="product-card__price">Цена: 2000 руб.</p>
-            <a class="button button--primary product-card__button" href="product.html">Подробнее</a>
+          <article class="product-card instrument-card" data-category="keys" data-price="58900">
+            <picture class="instrument-picture">
+                  <img src="images/piano-320.webp"
+                  srcset="images/piano-320.webp 320w, images/piano-512.webp 512w"
+                  sizes="(min-width: 1024px) 250px, (min-width: 768px) 33vw, calc(100vw - 32px)"
+                    alt="Цифровое пианино Keys 88" width="320" height="320" loading="lazy" decoding="async">
+                </picture>
+            <div class="instrument-card__body">
+              <p class="instrument-card__category">Клавишные · В наличии</p>
+              <h3 class="product-card__title">Цифровое пианино Keys 88</h3>
+              <p class="product-card__description">88 клавиш · молоточковая механика</p>
+              <p class="product-card__price">58 900 ₽</p>
+              <a class="button button--secondary product-card__button" href="product.html?item=piano" aria-label="Подробнее: Цифровое пианино Keys 88">Подробнее</a>
+            </div>
           </article>
-
-          <article class="product-card product-card--sold-out">
-            <span class="product-card__badge product-card__badge--muted">Нет в наличии</span>
-            <h3 class="product-card__title">Товар 4</h3>
-            <p class="product-card__description">Краткое описание учебного товара.</p>
-            <p class="product-card__price">Цена: 2500 руб.</p>
-            <button class="button button--primary product-card__button" type="button" disabled>Нет в наличии</button>
+          <article class="product-card instrument-card" data-category="drums" data-price="46900">
+            <picture class="instrument-picture">
+                  <img src="images/drums-320.webp"
+                  srcset="images/drums-320.webp 320w, images/drums-512.webp 512w"
+                  sizes="(min-width: 1024px) 250px, (min-width: 768px) 33vw, calc(100vw - 32px)"
+                    alt="Электронные барабаны Beat Kit" width="320" height="320" loading="lazy" decoding="async">
+                </picture>
+            <div class="instrument-card__body">
+              <p class="instrument-card__category">Ударные · В наличии</p>
+              <h3 class="product-card__title">Электронные барабаны Beat Kit</h3>
+              <p class="product-card__description">4 пэда · 3 тарелки</p>
+              <p class="product-card__price">46 900 ₽</p>
+              <a class="button button--secondary product-card__button" href="product.html?item=drums" aria-label="Подробнее: Электронные барабаны Beat Kit">Подробнее</a>
+            </div>
           </article>
-
-          <article class="product-card product-card--discount">
-            <span class="product-card__badge">Скидка</span>
-            <h3 class="product-card__title">Товар 5</h3>
-            <p class="product-card__description">Краткое описание учебного товара.</p>
-            <p class="product-card__price">
-              Цена: 1800 руб.
-              <s class="product-card__old-price">2400 руб.</s>
-            </p>
-            <a class="button button--primary product-card__button" href="product.html">Подробнее</a>
+          <article class="product-card instrument-card" data-category="winds" data-price="51900">
+            <picture class="instrument-picture">
+                  <img src="images/sax-320.webp"
+                  srcset="images/sax-320.webp 320w, images/sax-512.webp 512w"
+                  sizes="(min-width: 1024px) 250px, (min-width: 768px) 33vw, calc(100vw - 32px)"
+                    alt="Альт-саксофон Alto Brass" width="320" height="320" loading="lazy" decoding="async">
+                </picture>
+            <div class="instrument-card__body">
+              <p class="instrument-card__category">Духовые · В наличии</p>
+              <h3 class="product-card__title">Альт-саксофон Alto Brass</h3>
+              <p class="product-card__description">Строй ми-бемоль · футляр</p>
+              <p class="product-card__price">51 900 ₽</p>
+              <a class="button button--secondary product-card__button" href="product.html?item=sax" aria-label="Подробнее: Альт-саксофон Alto Brass">Подробнее</a>
+            </div>
           </article>
-
-          <article class="product-card product-card--new">
-            <span class="product-card__badge product-card__badge--new">Новинка</span>
-            <h3 class="product-card__title">Товар 6</h3>
-            <p class="product-card__description">Краткое описание учебного товара.</p>
-            <p class="product-card__price">Цена: 3000 руб.</p>
-            <a class="button button--primary product-card__button" href="product.html">Подробнее</a>
+          <article class="product-card instrument-card" data-category="strings" data-price="15900">
+            <picture class="instrument-picture">
+                  <img src="images/violin-320.webp"
+                  srcset="images/violin-320.webp 320w, images/violin-512.webp 512w"
+                  sizes="(min-width: 1024px) 250px, (min-width: 768px) 33vw, calc(100vw - 32px)"
+                    alt="Скрипка Arco 4/4" width="320" height="320" loading="lazy" decoding="async">
+                </picture>
+            <div class="instrument-card__body">
+              <p class="instrument-card__category">Струнные · В наличии</p>
+              <h3 class="product-card__title">Скрипка Arco 4/4</h3>
+              <p class="product-card__description">Размер 4/4 · смычок в комплекте</p>
+              <p class="product-card__price">15 900 ₽</p>
+              <a class="button button--secondary product-card__button" href="product.html?item=violin" aria-label="Подробнее: Скрипка Arco 4/4">Подробнее</a>
+            </div>
           </article>
-
-          <article class="product-card">
-            <h3 class="product-card__title">Товар 7</h3>
-            <p class="product-card__description">Краткое описание учебного товара.</p>
-            <p class="product-card__price">Цена: 1100 руб.</p>
-            <a class="button button--primary product-card__button" href="product.html">Подробнее</a>
+          <article class="product-card instrument-card" data-category="strings" data-price="29900">
+            <picture class="instrument-picture">
+                  <img src="images/bass-320.webp"
+                  srcset="images/bass-320.webp 320w, images/bass-512.webp 512w"
+                  sizes="(min-width: 1024px) 250px, (min-width: 768px) 33vw, calc(100vw - 32px)"
+                    alt="Бас-гитара Lowline JB" width="320" height="320" loading="lazy" decoding="async">
+                </picture>
+            <div class="instrument-card__body">
+              <p class="instrument-card__category">Струнные · В наличии</p>
+              <h3 class="product-card__title">Бас-гитара Lowline JB</h3>
+              <p class="product-card__description">4 струны · 2 звукоснимателя</p>
+              <p class="product-card__price">29 900 ₽</p>
+              <a class="button button--secondary product-card__button" href="product.html?item=bass" aria-label="Подробнее: Бас-гитара Lowline JB">Подробнее</a>
+            </div>
           </article>
-
-          <article class="product-card">
-            <h3 class="product-card__title">Товар 8</h3>
-            <p class="product-card__description">Краткое описание учебного товара.</p>
-            <p class="product-card__price">Цена: 2200 руб.</p>
-            <a class="button button--primary product-card__button" href="product.html">Подробнее</a>
+          <article class="product-card instrument-card" data-category="strings" data-price="5900">
+            <picture class="instrument-picture">
+                  <img src="images/ukulele-320.webp"
+                  srcset="images/ukulele-320.webp 320w, images/ukulele-512.webp 512w"
+                  sizes="(min-width: 1024px) 250px, (min-width: 768px) 33vw, calc(100vw - 32px)"
+                    alt="Укулеле Soprano U1" width="320" height="320" loading="lazy" decoding="async">
+                </picture>
+            <div class="instrument-card__body">
+              <p class="instrument-card__category">Струнные · В наличии</p>
+              <h3 class="product-card__title">Укулеле Soprano U1</h3>
+              <p class="product-card__description">Сопрано · 4 нейлоновые струны</p>
+              <p class="product-card__price">5 900 ₽</p>
+              <a class="button button--secondary product-card__button" href="product.html?item=ukulele" aria-label="Подробнее: Укулеле Soprano U1">Подробнее</a>
+            </div>
           </article>
-
-          <article class="product-card product-card--featured">
-            <span class="product-card__badge product-card__badge--hit">Хит</span>
-            <h3 class="product-card__title">Товар 9</h3>
-            <p class="product-card__description">Краткое описание учебного товара.</p>
-            <p class="product-card__price">Цена: 2700 руб.</p>
-            <a class="button button--primary product-card__button" href="product.html">Подробнее</a>
+          <article class="product-card instrument-card" data-category="winds" data-price="21900">
+            <picture class="instrument-picture">
+                  <img src="images/flute-320.webp"
+                  srcset="images/flute-320.webp 320w, images/flute-512.webp 512w"
+                  sizes="(min-width: 1024px) 250px, (min-width: 768px) 33vw, calc(100vw - 32px)"
+                    alt="Поперечная флейта Air 16" width="320" height="320" loading="lazy" decoding="async">
+                </picture>
+            <div class="instrument-card__body">
+              <p class="instrument-card__category">Духовые · Нет в наличии</p>
+              <h3 class="product-card__title">Поперечная флейта Air 16</h3>
+              <p class="product-card__description">Строй до · 16 клапанов</p>
+              <p class="product-card__price">21 900 ₽</p>
+              <a class="button button--secondary product-card__button" href="product.html?item=flute" aria-label="Подробнее: Поперечная флейта Air 16">Подробнее</a>
+            </div>
           </article>
-
-          <article class="product-card product-card--discount">
-            <span class="product-card__badge">Скидка</span>
-            <h3 class="product-card__title">Товар 10</h3>
-            <p class="product-card__description">Краткое описание учебного товара.</p>
-            <p class="product-card__price">
-              Цена: 900 руб.
-              <s class="product-card__old-price">1200 руб.</s>
-            </p>
-            <a class="button button--primary product-card__button" href="product.html">Подробнее</a>
+          <article class="product-card instrument-card" data-category="keys" data-price="22410">
+            <picture class="instrument-picture">
+                  <img src="images/synth-320.webp"
+                  srcset="images/synth-320.webp 320w, images/synth-512.webp 512w"
+                  sizes="(min-width: 1024px) 250px, (min-width: 768px) 33vw, calc(100vw - 32px)"
+                    alt="Синтезатор Pulse Mini" width="320" height="320" loading="lazy" decoding="async">
+                </picture>
+            <div class="instrument-card__body">
+              <p class="instrument-card__category">Клавишные · В наличии</p>
+              <h3 class="product-card__title">Синтезатор Pulse Mini</h3>
+              <p class="product-card__description">37 мини-клавиш · USB-MIDI</p>
+              <p class="product-card__price">22 410 ₽ <s>24 900 ₽</s></p>
+              <a class="button button--secondary product-card__button" href="product.html?item=synth" aria-label="Подробнее: Синтезатор Pulse Mini">Подробнее</a>
+            </div>
           </article>
-
-          <article class="product-card">
-            <h3 class="product-card__title">Товар 11</h3>
-            <p class="product-card__description">Краткое описание учебного товара.</p>
-            <p class="product-card__price">Цена: 3500 руб.</p>
-            <a class="button button--primary product-card__button" href="product.html">Подробнее</a>
+          <article class="product-card instrument-card" data-category="drums" data-price="10900">
+            <picture class="instrument-picture">
+                  <img src="images/cajon-320.webp"
+                  srcset="images/cajon-320.webp 320w, images/cajon-512.webp 512w"
+                  sizes="(min-width: 1024px) 250px, (min-width: 768px) 33vw, calc(100vw - 32px)"
+                    alt="Кахон Rhythm Box" width="320" height="320" loading="lazy" decoding="async">
+                </picture>
+            <div class="instrument-card__body">
+              <p class="instrument-card__category">Ударные · В наличии</p>
+              <h3 class="product-card__title">Кахон Rhythm Box</h3>
+              <p class="product-card__description">Берёзовый корпус · струны внутри</p>
+              <p class="product-card__price">10 900 ₽</p>
+              <a class="button button--secondary product-card__button" href="product.html?item=cajon" aria-label="Подробнее: Кахон Rhythm Box">Подробнее</a>
+            </div>
           </article>
-
-          <article class="product-card product-card--new">
-            <span class="product-card__badge product-card__badge--new">Новинка</span>
-            <h3 class="product-card__title">Товар 12</h3>
-            <p class="product-card__description">Краткое описание учебного товара.</p>
-            <p class="product-card__price">Цена: 4000 руб.</p>
-            <a class="button button--primary product-card__button" href="product.html">Подробнее</a>
+          <article class="product-card instrument-card" data-category="strings" data-price="14900">
+            <picture class="instrument-picture">
+                  <img src="images/classical-320.webp"
+                  srcset="images/classical-320.webp 320w, images/classical-512.webp 512w"
+                  sizes="(min-width: 1024px) 250px, (min-width: 768px) 33vw, calc(100vw - 32px)"
+                    alt="Классическая гитара Nylon C3" width="320" height="320" loading="lazy" decoding="async">
+                </picture>
+            <div class="instrument-card__body">
+              <p class="instrument-card__category">Струнные · В наличии</p>
+              <h3 class="product-card__title">Классическая гитара Nylon C3</h3>
+              <p class="product-card__description">6 струн · корпус 4/4</p>
+              <p class="product-card__price">14 900 ₽</p>
+              <a class="button button--secondary product-card__button" href="product.html?item=classical" aria-label="Подробнее: Классическая гитара Nylon C3">Подробнее</a>
+            </div>
           </article>
         </div>
-          
       </section>
     </section>
   </main>
 
-  <footer class="site-footer">
+  <footer class="site-footer" id="contacts">
     <div class="site-footer__inner">
-      <p class="site-footer__text">&copy; 2026 Учебный проект. Все права защищены.</p>
-      <p class="site-footer__text">Дисциплина: Фронтенд и бэкенд разработка</p>
+      <div class="site-footer__grid">
+        <div>
+          <a class="site-footer__brand" href="index.html"><span class="brand-mark" aria-hidden="true">Р</span> РЕЗОНАНС</a>
+          <p>Музыкальные инструменты для занятий, репетиций и выступлений.</p>
+        </div>
+        <nav aria-label="Разделы в подвале">
+          <h2>Покупателям</h2>
+          <ul>
+            <li><a href="catalog.html">Каталог</a></li>
+            <li><a href="order.html">Оставить заявку</a></li>
+            <li><a href="index.html#faq">Частые вопросы</a></li>
+          </ul>
+        </nav>
+        <div>
+          <h2>Контакты</h2>
+          <address>
+            <a href="tel:+79000000000">+7 (900) 000-00-00</a>
+            <a href="mailto:info@example.com">info@example.com</a>
+            <a href="contacts.html#map">Москва · посмотреть на карте</a>
+          </address>
+          <p>Пн–Сб, 10:00–19:00</p>
+        </div>
+      </div>
+      <p class="site-footer__bottom">© 2026 Резонанс. Учебный магазин, контакты и цены демонстрационные.</p>
     </div>
   </footer>
 </body>

@@ -1,0 +1,281 @@
+:root {
+  --color-bg: #fffdf8;
+  --color-surface: #f1ede3;
+  --color-text: #21251f;
+  --color-muted: #52594e;
+  --color-primary: #355640;
+  --color-primary-dark: #223d2b;
+  --color-border: #d8d1c2;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --container-width: 1100px;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.site-header {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.site-header__logo,
+.site-footer__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+}
+
+.brand-mark {
+  display: inline-grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border-radius: 50%;
+  background: #d9ad6c;
+  color: #21251f;
+  font-family: Georgia, serif;
+  font-size: 1.35rem;
+}
+
+.hero {
+  display: grid;
+  overflow: hidden;
+  padding: 0;
+  background: #202b23;
+  color: #fffdf8;
+}
+
+.hero__content {
+  padding: clamp(24px, 5vw, 64px);
+  align-self: center;
+}
+
+.hero__category,
+.instrument-card__category {
+  margin: 0 0 8px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.hero__category {
+  color: #efc687;
+  text-transform: uppercase;
+}
+
+.hero__title {
+  font-family: Georgia, serif;
+  font-size: clamp(2.2rem, 5.7vw, 4.3rem);
+  line-height: 1.03;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+
+.hero__text {
+  color: #e0e8de;
+}
+
+.hero .button--primary {
+  background: #edbf7a;
+  color: #24291e;
+}
+
+.hero .button--primary:hover {
+  background: #ffe0ae;
+}
+
+.hero .button:focus-visible,
+.site-footer a:focus-visible {
+  outline: 2px solid #f1c489;
+  outline-offset: 4px;
+}
+
+.hero__picture {
+  display: block;
+  min-width: 0;
+}
+
+.hero__picture img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 200px;
+  max-height: 460px;
+  object-fit: cover;
+}
+
+.section-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  column-gap: 16px;
+  margin-bottom: 16px;
+}
+
+.section-heading .section__title {
+  margin: 0;
+}
+
+.section-heading a,
+.contact-panel a {
+  color: var(--color-primary);
+}
+
+.instrument-card {
+  min-width: 0;
+  padding: 0;
+  overflow: hidden;
+  gap: 0;
+}
+
+.instrument-picture img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  background: #eee6d7;
+  object-fit: cover;
+}
+
+.product > .instrument-picture {
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+}
+
+.instrument-card__body {
+  display: grid;
+  align-content: start;
+  gap: 10px;
+  padding: 18px;
+}
+
+.instrument-card__category,
+.instrument-card s {
+  color: var(--color-muted);
+}
+
+.instrument-card__body .button {
+  justify-self: start;
+}
+
+.instrument-card__body .button:focus-visible {
+  outline-offset: 2px;
+}
+
+.catalog-intro,
+.contact-panel {
+  padding: clamp(20px, 4vw, 38px);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+}
+
+.catalog-intro p {
+  margin-bottom: 0;
+}
+
+#catalog-count {
+  color: var(--color-muted);
+}
+
+.filters-form .button + .button {
+  margin-top: 4px;
+}
+
+.product-table th,
+.product-table td {
+  padding: 12px 16px;
+  border: 1px solid var(--color-border);
+  text-align: left;
+}
+
+.product-table thead {
+  background: var(--color-surface);
+}
+
+.product__info .button {
+  margin-bottom: 8px;
+}
+
+.contact-panel {
+  display: grid;
+  gap: 24px;
+}
+
+.contact-panel address,
+.site-footer address {
+  display: grid;
+  gap: 8px;
+  font-style: normal;
+}
+
+.contact-panel__map {
+  display: block;
+  width: 100%;
+  min-height: 350px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg);
+}
+
+.site-footer {
+  background: #202b23;
+  color: #dbe4d9;
+}
+
+.site-footer__inner {
+  padding-top: 36px;
+  padding-bottom: 24px;
+}
+
+.site-footer__grid {
+  display: grid;
+  gap: 24px;
+}
+
+.site-footer a {
+  color: #fffdf8;
+  text-underline-offset: 3px;
+  overflow-wrap: anywhere;
+}
+
+.site-footer h2 {
+  margin-top: 0;
+  color: #fffdf8;
+  font-size: 1rem;
+}
+
+.site-footer ul {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-footer__bottom {
+  margin: 28px 0 0;
+  padding-top: 18px;
+  border-top: 1px solid #718070;
+  font-size: 0.875rem;
+}
+
+@media (min-width: 768px) {
+  .hero,
+  .contact-panel {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .hero__picture img {
+    max-height: none;
+  }
+
+  .site-footer__grid {
+    grid-template-columns: 1.35fr 1fr 1fr;
+  }
+}

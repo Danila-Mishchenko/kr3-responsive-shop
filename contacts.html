@@ -3,25 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Контактная информация учебного интернет-магазина.">
-  <title>Контакты — Учебный интернет-магазин</title>
+  <meta name="description" content="Контакты и карта — Резонанс">
+  <title>Контакты и карта — Резонанс</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/music.css?v=1">
 </head>
 <body>
   <header class="site-header">
     <div class="site-header__inner">
-      <a class="site-header__logo" href="index.html">ShopProject</a>
+      <a class="site-header__logo" href="index.html"><span class="brand-mark" aria-hidden="true">Р</span> РЕЗОНАНС</a>
 
       <nav class="site-nav" aria-label="Основная навигация">
         <ul class="site-nav__list">
   <li class="site-nav__item"><a class="site-nav__link" href="index.html">Главная</a></li>
   <li class="site-nav__item"><a class="site-nav__link" href="catalog.html">Каталог</a></li>
-  <li class="site-nav__item"><a class="site-nav__link" href="product.html">Товар</a></li>
+  <li class="site-nav__item"><a class="site-nav__link" href="product.html">Инструмент</a></li>
   <li class="site-nav__item"><a class="site-nav__link" href="order.html">Заявка</a></li>
   <li class="site-nav__item"><a class="site-nav__link site-nav__link--active" href="contacts.html" aria-current="page">Контакты</a></li>
   <li class="site-nav__item"><a class="site-nav__link" href="index.html#popular">Популярные товары</a></li>
-  <li class="site-nav__item"><a class="site-nav__link" href="index.html#contacts">Обратная связь</a></li>
+  <li class="site-nav__item"><a class="site-nav__link" href="index.html#contacts">Связаться</a></li>
 </ul>
       </nav>
     </div>
@@ -33,33 +34,54 @@
       <span class="breadcrumbs__current">Контакты</span>
     </nav>
 
-    <section class="section">
-      <h1 class="section__title">Контакты</h1>
-      <p>Здесь размещается контактная информация учебного интернет-магазина.</p>
-
-      <ul class="contact-list">
-        <li class="contact-list__item">Телефон: +7 (900) 000-00-00</li>
-        <li class="contact-list__item">E-mail: info@example.com</li>
-        <li class="contact-list__item">Адрес: г. Москва, учебный проект</li>
-      </ul>
-
-      <aside class="info-box">
-        <h2 class="info-box__title">Режим работы</h2>
-        <p class="info-box__text">Пн–Пт: 9:00–18:00. Сб–Вс: выходной.</p>
-      </aside>
+    <section class="section contact-panel" id="map" aria-labelledby="contacts-title">
+      <div>
+        <h1 class="section__title" id="contacts-title">Контакты и схема проезда</h1>
+        <p>По вопросам об инструментах и заявках.</p>
+        <address>
+          <a href="tel:+79000000000">+7 (900) 000-00-00</a>
+          <a href="mailto:info@example.com">info@example.com</a>
+          <span>Пн–Сб, 10:00–19:00</span>
+        </address>
+        <p>На карте отмечена демонстрационная точка в центре Москвы.</p>
+        <a href="https://yandex.ru/maps/?ll=37.6204%2C55.7540&amp;z=15&amp;pt=37.6204%2C55.7540%2Cpm2rdm">Открыть в Яндекс Картах</a>
+      </div>
+      <iframe class="contact-panel__map"
+        src="https://yandex.ru/map-widget/v1/?ll=37.6204%2C55.7540&amp;z=15&amp;pt=37.6204%2C55.7540%2Cpm2rdm"
+        title="Яндекс Карты. Демонстрационная точка в центре Москвы" loading="lazy"></iframe>
     </section>
-
     <section class="section" id="feedback">
-      <h2 class="section__title">Обратная связь</h2>
-            <p>Для отправки заявки используйте форму на странице заявки.</p>
+      <h2 class="section__title">Оставить заявку</h2>
       <a class="button button--primary" href="order.html">Перейти к форме</a>
     </section>
   </main>
 
-  <footer class="site-footer">
+  <footer class="site-footer" id="contacts">
     <div class="site-footer__inner">
-      <p class="site-footer__text">&copy; 2026 Учебный проект. Все права защищены.</p>
-      <p class="site-footer__text">Дисциплина: Фронтенд и бэкенд разработка</p>
+      <div class="site-footer__grid">
+        <div>
+          <a class="site-footer__brand" href="index.html"><span class="brand-mark" aria-hidden="true">Р</span> РЕЗОНАНС</a>
+          <p>Музыкальные инструменты для занятий, репетиций и выступлений.</p>
+        </div>
+        <nav aria-label="Разделы в подвале">
+          <h2>Покупателям</h2>
+          <ul>
+            <li><a href="catalog.html">Каталог</a></li>
+            <li><a href="order.html">Оставить заявку</a></li>
+            <li><a href="index.html#faq">Частые вопросы</a></li>
+          </ul>
+        </nav>
+        <div>
+          <h2>Контакты</h2>
+          <address>
+            <a href="tel:+79000000000">+7 (900) 000-00-00</a>
+            <a href="mailto:info@example.com">info@example.com</a>
+            <a href="contacts.html#map">Москва · посмотреть на карте</a>
+          </address>
+          <p>Пн–Сб, 10:00–19:00</p>
+        </div>
+      </div>
+      <p class="site-footer__bottom">© 2026 Резонанс. Учебный магазин, контакты и цены демонстрационные.</p>
     </div>
   </footer>
 </body>

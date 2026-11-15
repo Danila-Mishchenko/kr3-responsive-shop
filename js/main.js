@@ -101,7 +101,7 @@ const orderDialog = document.getElementById('order-dialog');
 
 if (orderDialog) {
   const orderForm = orderDialog.querySelector('.order-form');
-  const orderButtons = document.querySelectorAll('.product-card__button');
+  const orderButtons = document.querySelectorAll('button[data-product]');
   const closeButton = document.getElementById('close-order-dialog');
   const closeIconButton = document.getElementById('close-order-dialog-icon');
   const productInput = document.getElementById('order-product');
