@@ -6,6 +6,7 @@
   <meta name="description" content="Карточка товара: описание, характеристики, сравнение комплектаций и отзывы.">
   <title>Товар 1 — Учебный интернет-магазин</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
   <header class="site-header">
@@ -35,7 +36,12 @@
     </nav>
 
     <section class="section product">
-      <img class="product__image" src="images/product-placeholder.svg" alt="Учебный товар 1" width="480" height="360">
+      <picture>
+        <source type="image/webp"
+                srcset="images/product-480.webp 480w, images/product-960.webp 960w"
+                sizes="(min-width: 1100px) 514px, (min-width: 768px) calc((100vw - 72px) / 2), calc(100vw - 32px)">
+        <img class="product__image" src="images/product-placeholder.svg" alt="" width="480" height="360">
+      </picture>
 
       <article class="product__info">
         <h1 class="product__title">Товар 1</h1>
@@ -52,84 +58,88 @@
     <section class="section">
       <h2 class="section__title">Характеристики</h2>
 
-      <table class="product-table">
-        <caption class="product-table__caption">Характеристики товара</caption>
-        <thead>
-          <tr>
-            <th class="product-table__head" scope="col">Параметр</th>
-            <th class="product-table__head" scope="col">Значение</th>
-            <th class="product-table__head" scope="col">Комментарий</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th class="product-table__cell" scope="row">Категория</th>
-            <td class="product-table__cell">Учебный товар</td>
-            <td class="product-table__cell">Относится к популярным</td>
-          </tr>
-          <tr>
-            <th class="product-table__cell" scope="row">Цена</th>
-            <td class="product-table__cell">1000 руб.</td>
-            <td class="product-table__cell">Указана с учётом НДС</td>
-          </tr>
-          <tr>
-            <th class="product-table__cell" scope="row">Наличие</th>
-            <td class="product-table__cell">В наличии</td>
-            <td class="product-table__cell">Более 10 штук</td>
-          </tr>
-          <tr>
-            <th class="product-table__cell" scope="row">Вес</th>
-            <td class="product-table__cell">500 г</td>
-            <td class="product-table__cell">Без упаковки</td>
-          </tr>
-          <tr>
-            <th class="product-table__cell" scope="row">Размер</th>
-            <td class="product-table__cell">20 × 15 × 10 см</td>
-            <td class="product-table__cell">Ширина × высота × глубина</td>
-          </tr>
-          <tr>
-            <th class="product-table__cell" scope="row">Гарантия</th>
-            <td class="product-table__cell">12 месяцев</td>
-            <td class="product-table__cell">Условия уточняйте в контактах</td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="table-wrapper" tabindex="0" role="region" aria-labelledby="product-caption">
+        <table class="product-table">
+          <caption class="product-table__caption" id="product-caption">Характеристики товара</caption>
+          <thead>
+            <tr>
+              <th class="product-table__head" scope="col">Параметр</th>
+              <th class="product-table__head" scope="col">Значение</th>
+              <th class="product-table__head" scope="col">Комментарий</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th class="product-table__cell" scope="row">Категория</th>
+              <td class="product-table__cell">Учебный товар</td>
+              <td class="product-table__cell">Относится к популярным</td>
+            </tr>
+            <tr>
+              <th class="product-table__cell" scope="row">Цена</th>
+              <td class="product-table__cell">1000 руб.</td>
+              <td class="product-table__cell">Указана с учётом НДС</td>
+            </tr>
+            <tr>
+              <th class="product-table__cell" scope="row">Наличие</th>
+              <td class="product-table__cell">В наличии</td>
+              <td class="product-table__cell">Более 10 штук</td>
+            </tr>
+            <tr>
+              <th class="product-table__cell" scope="row">Вес</th>
+              <td class="product-table__cell">500 г</td>
+              <td class="product-table__cell">Без упаковки</td>
+            </tr>
+            <tr>
+              <th class="product-table__cell" scope="row">Размер</th>
+              <td class="product-table__cell">20 × 15 × 10 см</td>
+              <td class="product-table__cell">Ширина × высота × глубина</td>
+            </tr>
+            <tr>
+              <th class="product-table__cell" scope="row">Гарантия</th>
+              <td class="product-table__cell">12 месяцев</td>
+              <td class="product-table__cell">Условия уточняйте в контактах</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </section>
 
     <section class="section">
       <h2 class="section__title">Сравнение комплектаций</h2>
 
-      <table class="product-table product-table--compare">
-        <caption class="product-table__caption">Комплектации товара</caption>
-        <thead>
-          <tr>
-            <th class="product-table__head" scope="col">Параметр</th>
-            <th class="product-table__head" scope="col">Базовая</th>
-            <th class="product-table__head" scope="col">Стандарт</th>
-            <th class="product-table__head" scope="col">Про</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th class="product-table__cell" scope="row">Цена</th>
-            <td class="product-table__cell">1000 руб.</td>
-            <td class="product-table__cell product-table__cell--accent">1500 руб.</td>
-            <td class="product-table__cell">2000 руб.</td>
-          </tr>
-          <tr>
-            <th class="product-table__cell" scope="row">Гарантия</th>
-            <td class="product-table__cell">6 месяцев</td>
-            <td class="product-table__cell product-table__cell--accent">12 месяцев</td>
-            <td class="product-table__cell">24 месяца</td>
-          </tr>
-          <tr>
-            <th class="product-table__cell" scope="row">Доставка</th>
-            <td class="product-table__cell">Платная</td>
-            <td class="product-table__cell product-table__cell--accent">Бесплатная</td>
-            <td class="product-table__cell">Бесплатная, срочная</td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="table-wrapper" tabindex="0" role="region" aria-labelledby="comparison-caption">
+        <table class="product-table product-table--compare">
+          <caption class="product-table__caption" id="comparison-caption">Комплектации товара</caption>
+          <thead>
+            <tr>
+              <th class="product-table__head" scope="col">Параметр</th>
+              <th class="product-table__head" scope="col">Базовая</th>
+              <th class="product-table__head" scope="col">Стандарт</th>
+              <th class="product-table__head" scope="col">Про</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th class="product-table__cell" scope="row">Цена</th>
+              <td class="product-table__cell">1000 руб.</td>
+              <td class="product-table__cell product-table__cell--accent">1500 руб.</td>
+              <td class="product-table__cell">2000 руб.</td>
+            </tr>
+            <tr>
+              <th class="product-table__cell" scope="row">Гарантия</th>
+              <td class="product-table__cell">6 месяцев</td>
+              <td class="product-table__cell product-table__cell--accent">12 месяцев</td>
+              <td class="product-table__cell">24 месяца</td>
+            </tr>
+            <tr>
+              <th class="product-table__cell" scope="row">Доставка</th>
+              <td class="product-table__cell">Платная</td>
+              <td class="product-table__cell product-table__cell--accent">Бесплатная</td>
+              <td class="product-table__cell">Бесплатная, срочная</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </section>
 
     <section class="section reviews">

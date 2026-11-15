@@ -204,7 +204,6 @@ body {
 /* ===== Блок: advantages ===== */
 .advantages__list {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
   gap: var(--space-lg);
   padding: 0;
   margin: 0;
@@ -229,7 +228,6 @@ body {
 /* ===== Блок: products-grid (Grid) ===== */
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
   gap: var(--space-lg);
 }
 
@@ -283,8 +281,6 @@ body {
 /* ===== Блок: catalog-layout (Grid) ===== */
 .catalog-layout {
   display: grid;
-  grid-template-columns: 260px 1fr;
-  grid-template-areas: "filters products";
   gap: var(--space-lg);
 }
 
@@ -501,7 +497,6 @@ body {
 /* ===== Блок: product (страница товара) ===== */
 .product {
   display: grid;
-  grid-template-columns: 1fr 1fr;
   gap: var(--space-lg);
   align-items: start;
 }
@@ -563,7 +558,6 @@ body {
 /* ===== Блоки: reviews / review-card ===== */
 .reviews__list {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
   gap: var(--space-lg);
 }
 
@@ -612,13 +606,6 @@ body {
 }
 
 /* ===== КР1: доработки ===== */
-
-/* --- 1. Sticky-фильтр каталога --- */
-.catalog-filters {
-  position: sticky;
-  top: var(--space-lg);
-  align-self: start;
-}
 
 /* --- 2. Дополнительные состояния кнопок --- */
 .button {
