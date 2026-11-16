@@ -355,3 +355,46 @@
     font-size: 1.25rem;
   }
 }
+
+.instrument-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.favorite-toggle[aria-pressed="true"] {
+  background: var(--color-primary);
+  color: var(--color-bg);
+}
+
+.saved-grid,
+.compare-results {
+  margin-top: 20px;
+}
+
+.compare-controls {
+  display: grid;
+  gap: 12px;
+  margin-block: 16px;
+}
+
+.compare-controls select {
+  display: block;
+  margin-top: 6px;
+}
+
+.compare-table {
+  table-layout: fixed;
+}
+
+.compare-table td,
+.compare-table th {
+  overflow-wrap: anywhere;
+  vertical-align: top;
+}
+
+@media (min-width: 768px) {
+  .compare-controls {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

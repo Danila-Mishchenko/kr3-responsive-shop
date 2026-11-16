@@ -65,12 +65,7 @@ const instrumentTitle = document.getElementById('product-title');
 
 if (instrumentTitle) {
   const product = selectedInstrument || instruments[0];
-  const finalPrice = product.price * (1 - product.discountPercent / 100);
-  const price = new Intl.NumberFormat('ru-RU', {
-    style: 'currency',
-    currency: 'RUB',
-    maximumFractionDigits: 2,
-  }).format(finalPrice);
+  const price = formatInstrumentPrice(product);
   const image = document.querySelector('.product .instrument-picture img');
   image.srcset = `images/${product.id}-320.webp 320w, images/${product.id}-512.webp 512w`;
   image.src = `images/${product.id}-320.webp`;
@@ -90,6 +85,7 @@ if (instrumentTitle) {
   const orderLink = document.getElementById('product-order');
   orderLink.href = 'order.html?item=' + product.id;
   orderLink.hidden = !product.isAvailable;
+  document.getElementById('product-compare').href = 'compare.html?first=' + product.id;
 }
 
 const instrumentSelect = document.getElementById('order-product-select');

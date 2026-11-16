@@ -122,3 +122,13 @@ const instruments = [
     "isAvailable": true
   }
 ];
+
+const instrumentPriceFormatter = new Intl.NumberFormat('ru-RU', {
+  style: 'currency',
+  currency: 'RUB',
+  maximumFractionDigits: 2,
+});
+
+function formatInstrumentPrice(product) {
+  return instrumentPriceFormatter.format(product.price * (1 - product.discountPercent / 100));
+}

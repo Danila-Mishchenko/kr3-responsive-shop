@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Избранное — Резонанс">
+  <title>Избранное — Резонанс</title>
+  <link rel="icon" href="images/harp-logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/music.css?v=3">
+  <script defer src="js/data.js?v=3"></script>
+  <script defer src="js/selection.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="site-header__logo" href="index.html"><img class="brand-mark" src="images/harp-logo.svg" width="42" height="42" alt=""> РЕЗОНАНС</a>
+
+      <nav class="site-nav" aria-label="Основная навигация">
+        <ul class="site-nav__list">
+          <li class="site-nav__item"><a class="site-nav__link" href="index.html">Главная</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="catalog.html">Каталог</a></li>
+          <li class="site-nav__item"><a class="site-nav__link site-nav__link--active" href="favorites.html" aria-current="page">Избранное</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="compare.html">Сравнение</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="contacts.html">Контакты</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page">
+    <section class="section">
+      <h1 class="section__title">Избранное</h1>
+      <p id="favorites-empty" hidden>Здесь появятся инструменты, которые вы сохранили в каталоге.</p>
+      <p id="favorites-count" role="status"></p>
+      <a class="button button--secondary" href="catalog.html">Перейти в каталог</a>
+      <div class="products-grid saved-grid" id="favorites-grid"></div>
+
+      <template id="favorite-template">
+        <article class="product-card instrument-card">
+          <div class="instrument-picture"><img width="320" height="320" alt="" loading="lazy"></div>
+          <div class="instrument-card__body">
+            <h2 class="product-card__title"></h2>
+            <p class="product-card__description"></p>
+            <p class="product-card__price"></p>
+            <div class="instrument-card__actions">
+              <a class="button button--primary saved-product-link">Подробнее</a>
+              <button class="button button--secondary" type="button" data-remove-favorite>Убрать</button>
+            </div>
+          </div>
+        </article>
+      </template>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="contacts">
+    <div class="site-footer__inner">
+      <div class="site-footer__grid">
+        <div>
+          <a class="site-footer__brand" href="index.html"><img class="brand-mark" src="images/harp-logo.svg" width="42" height="42" alt=""> РЕЗОНАНС</a>
+          <p>Музыкальные инструменты для занятий, репетиций и выступлений.</p>
+        </div>
+        <nav aria-label="Разделы в подвале">
+          <h2>Покупателям</h2>
+          <ul>
+            <li><a href="catalog.html">Каталог</a></li>
+            <li><a href="favorites.html">Избранное</a></li>
+            <li><a href="index.html#faq">Частые вопросы</a></li>
+          </ul>
+        </nav>
+        <div>
+          <h2>Контакты</h2>
+          <address>
+            <a href="tel:+79000000000">+7 (900) 000-00-00</a>
+            <a href="mailto:info@example.com">info@example.com</a>
+            <a href="contacts.html#map">Москва · посмотреть на карте</a>
+          </address>
+          <p>Пн–Сб, 10:00–19:00</p>
+        </div>
+      </div>
+      <p class="site-footer__bottom">© 2026 Резонанс. Учебный магазин, контакты и цены демонстрационные.</p>
+    </div>
+  </footer>
+</body>
+</html>

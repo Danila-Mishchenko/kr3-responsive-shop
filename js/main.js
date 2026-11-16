@@ -96,7 +96,7 @@ document.querySelectorAll('.order-form').forEach((form) => {
   });
 });
 
-// ===== Модальное окно заявки (есть только на index.html) =====
+// ===== Модальное окно заявки (в каталоге) =====
 const orderDialog = document.getElementById('order-dialog');
 
 if (orderDialog) {
