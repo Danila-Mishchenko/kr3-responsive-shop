@@ -7,6 +7,19 @@ if (filtersForm) {
   const count = document.getElementById('catalog-count');
   const fromInput = document.getElementById('price-from');
   const toInput = document.getElementById('price-to');
+  const panel = document.querySelector('.filter-panel');
+  const desktop = matchMedia('(min-width: 768px)');
+  const query = new URLSearchParams(location.search);
+
+  panel.open = desktop.matches;
+  desktop.addEventListener('change', (event) => { panel.open = event.matches; });
+
+  const selectedCategories = query.getAll('category');
+  for (const checkbox of filtersForm.querySelectorAll('[name="category"]')) {
+    checkbox.checked = selectedCategories.includes(checkbox.value);
+  }
+  fromInput.value = query.get('price-from') || '';
+  toInput.value = query.get('price-to') || '';
 
   function filterCards() {
     const categories = new FormData(filtersForm).getAll('category');
@@ -24,11 +37,25 @@ if (filtersForm) {
     count.textContent = matches > 0 ? 'Найдено: ' + matches : 'Подходящих инструментов нет.';
   }
 
+  function applyFilters() {
+    filterCards();
+    if (location.protocol === 'file:') return;
+
+    const url = new URL(location.href);
+    const values = new FormData(filtersForm);
+    for (const key of ['category', 'price-from', 'price-to']) url.searchParams.delete(key);
+    for (const [key, value] of values) {
+      if (value !== '') url.searchParams.append(key, value);
+    }
+    history.replaceState(null, '', url);
+  }
+
   filtersForm.addEventListener('submit', (event) => {
     event.preventDefault();
-    filterCards();
+    applyFilters();
   });
-  filtersForm.addEventListener('reset', () => setTimeout(filterCards, 0));
+  filtersForm.addEventListener('reset', () => setTimeout(applyFilters, 0));
+  if (query.has('category') || fromInput.value || toInput.value) filterCards();
 }
 
 // Карточка инструмента и заявка

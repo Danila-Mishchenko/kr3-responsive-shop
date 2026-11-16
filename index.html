@@ -5,14 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Резонанс — магазин музыкальных инструментов">
   <title>Резонанс — магазин музыкальных инструментов</title>
+  <link rel="icon" href="images/harp-logo.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/responsive.css">
-  <link rel="stylesheet" href="css/music.css?v=1">
+  <link rel="stylesheet" href="css/music.css?v=2">
 </head>
 <body>
   <header class="site-header">
     <div class="site-header__inner">
-      <a class="site-header__logo" href="index.html"><span class="brand-mark" aria-hidden="true">Р</span> РЕЗОНАНС</a>
+      <a class="site-header__logo" href="index.html"><img class="brand-mark" src="images/harp-logo.svg" width="42" height="42" alt=""> РЕЗОНАНС</a>
 
       <nav class="site-nav" aria-label="Основная навигация">
         <ul class="site-nav__list">
@@ -40,6 +41,35 @@
         <source media="(min-width: 768px)" srcset="images/music-studio-1280.webp">
         <img src="images/music-studio-640.webp" alt="" width="640" height="427" fetchpriority="high">
       </picture>
+    </section>
+    <section class="section" aria-labelledby="categories-title">
+      <h2 class="section__title" id="categories-title">Категории инструментов</h2>
+      <ul class="category-grid">
+        <li>
+          <a class="category-tile" href="catalog.html?category=strings">
+            <img src="images/acoustic-320.webp" width="320" height="320" alt="" loading="lazy">
+            <span>Струнные</span>
+          </a>
+        </li>
+        <li>
+          <a class="category-tile" href="catalog.html?category=keys">
+            <img src="images/piano-320.webp" width="320" height="320" alt="" loading="lazy">
+            <span>Клавишные</span>
+          </a>
+        </li>
+        <li>
+          <a class="category-tile" href="catalog.html?category=drums">
+            <img src="images/drums-320.webp" width="320" height="320" alt="" loading="lazy">
+            <span>Ударные</span>
+          </a>
+        </li>
+        <li>
+          <a class="category-tile" href="catalog.html?category=winds">
+            <img src="images/sax-320.webp" width="320" height="320" alt="" loading="lazy">
+            <span>Духовые</span>
+          </a>
+        </li>
+      </ul>
     </section>
     <section class="section" id="popular">
       <div class="section-heading">
@@ -164,7 +194,7 @@
     <div class="site-footer__inner">
       <div class="site-footer__grid">
         <div>
-          <a class="site-footer__brand" href="index.html"><span class="brand-mark" aria-hidden="true">Р</span> РЕЗОНАНС</a>
+          <a class="site-footer__brand" href="index.html"><img class="brand-mark" src="images/harp-logo.svg" width="42" height="42" alt=""> РЕЗОНАНС</a>
           <p>Музыкальные инструменты для занятий, репетиций и выступлений.</p>
         </div>
         <nav aria-label="Разделы в подвале">

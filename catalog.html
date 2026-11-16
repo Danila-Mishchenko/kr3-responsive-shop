@@ -5,16 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Каталог инструментов — Резонанс">
   <title>Каталог инструментов — Резонанс</title>
+  <link rel="icon" href="images/harp-logo.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/responsive.css">
-  <link rel="stylesheet" href="css/music.css?v=1">
+  <link rel="stylesheet" href="css/music.css?v=2">
   <script defer src="js/data.js?v=2"></script>
-  <script defer src="js/store.js?v=2"></script>
+  <script defer src="js/store.js?v=3"></script>
 </head>
 <body>
   <header class="site-header">
     <div class="site-header__inner">
-      <a class="site-header__logo" href="index.html"><span class="brand-mark" aria-hidden="true">Р</span> РЕЗОНАНС</a>
+      <a class="site-header__logo" href="index.html"><img class="brand-mark" src="images/harp-logo.svg" width="42" height="42" alt=""> РЕЗОНАНС</a>
 
       <nav class="site-nav" aria-label="Основная навигация">
        <ul class="site-nav__list">
@@ -43,30 +44,32 @@
 
     <section class="catalog-layout">
       <aside class="catalog-filters">
-        <h2 class="catalog-filters__title">Фильтры</h2>
+        <details class="filter-panel" open>
+          <summary class="filter-panel__summary">Фильтры</summary>
+          <h2 class="filter-panel__title">Фильтры</h2>
+          <form class="filters-form" action="#" method="get">
+            <fieldset class="filters-form__group">
+              <legend class="filters-form__legend">Категория</legend>
+              <label class="filters-form__label"><input type="checkbox" name="category" value="strings"> Струнные</label>
+              <label class="filters-form__label"><input type="checkbox" name="category" value="keys"> Клавишные</label>
+              <label class="filters-form__label"><input type="checkbox" name="category" value="drums"> Ударные</label>
+              <label class="filters-form__label"><input type="checkbox" name="category" value="winds"> Духовые</label>
+            </fieldset>
 
-        <form class="filters-form" action="#" method="get">
-          <fieldset class="filters-form__group">
-            <legend class="filters-form__legend">Категория</legend>
-            <label class="filters-form__label"><input type="checkbox" name="category" value="strings"> Струнные</label>
-            <label class="filters-form__label"><input type="checkbox" name="category" value="keys"> Клавишные</label>
-            <label class="filters-form__label"><input type="checkbox" name="category" value="drums"> Ударные</label>
-            <label class="filters-form__label"><input type="checkbox" name="category" value="winds"> Духовые</label>
-          </fieldset>
+            <fieldset class="filters-form__group">
+              <legend class="filters-form__legend">Цена</legend>
 
-          <fieldset class="filters-form__group">
-            <legend class="filters-form__legend">Цена</legend>
+              <label class="filters-form__label" for="price-from">От</label>
+              <input class="filters-form__input" id="price-from" name="price-from" type="number" min="0" placeholder="0">
 
-            <label class="filters-form__label" for="price-from">От</label>
-            <input class="filters-form__input" id="price-from" name="price-from" type="number" min="0" placeholder="0">
+              <label class="filters-form__label" for="price-to">До</label>
+              <input class="filters-form__input" id="price-to" name="price-to" type="number" min="0" placeholder="60000">
+            </fieldset>
 
-            <label class="filters-form__label" for="price-to">До</label>
-            <input class="filters-form__input" id="price-to" name="price-to" type="number" min="0" placeholder="60000">
-          </fieldset>
-
-          <button class="button button--primary" type="submit">Применить</button>
-          <button class="button button--secondary" type="reset">Сбросить</button>
-        </form>
+            <button class="button button--primary" type="submit">Применить</button>
+            <button class="button button--secondary" type="reset">Сбросить</button>
+          </form>
+        </details>
       </aside>
 
       <section class="catalog-products">
@@ -262,7 +265,7 @@
     <div class="site-footer__inner">
       <div class="site-footer__grid">
         <div>
-          <a class="site-footer__brand" href="index.html"><span class="brand-mark" aria-hidden="true">Р</span> РЕЗОНАНС</a>
+          <a class="site-footer__brand" href="index.html"><img class="brand-mark" src="images/harp-logo.svg" width="42" height="42" alt=""> РЕЗОНАНС</a>
           <p>Музыкальные инструменты для занятий, репетиций и выступлений.</p>
         </div>
         <nav aria-label="Разделы в подвале">
