@@ -38,7 +38,12 @@ const instrumentTitle = document.getElementById('product-title');
 
 if (instrumentTitle) {
   const product = selectedInstrument || instruments[0];
-  const price = formatPrice(calculateFinalPrice(product.price, product.discountPercent));
+  const finalPrice = product.price * (1 - product.discountPercent / 100);
+  const price = new Intl.NumberFormat('ru-RU', {
+    style: 'currency',
+    currency: 'RUB',
+    maximumFractionDigits: 2,
+  }).format(finalPrice);
   const image = document.querySelector('.product .instrument-picture img');
   image.srcset = `images/${product.id}-320.webp 320w, images/${product.id}-512.webp 512w`;
   image.src = `images/${product.id}-320.webp`;
@@ -49,7 +54,8 @@ if (instrumentTitle) {
   document.getElementById('product-description').textContent = product.description;
   document.getElementById('product-category').textContent = product.category;
   document.getElementById('product-price').textContent = price;
-  document.getElementById('product-availability').textContent = getProductStatus(product);
+  document.getElementById('product-availability').textContent =
+    product.isAvailable ? 'В наличии' : 'Нет в наличии';
   document.getElementById('spec-category').textContent = product.category;
   document.getElementById('spec-details').textContent = product.specs;
   document.getElementById('spec-price').textContent = price;

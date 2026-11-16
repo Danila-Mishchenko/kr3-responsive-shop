@@ -122,5 +122,3 @@ const instruments = [
     "isAvailable": true
   }
 ];
-
-const demoProduct = instruments[1];
