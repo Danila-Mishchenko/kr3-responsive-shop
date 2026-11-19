@@ -8,15 +8,17 @@
   <link rel="icon" href="images/harp-logo.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/responsive.css">
-  <link rel="stylesheet" href="css/music.css?v=3">
+  <link rel="stylesheet" href="css/music.css?v=4">
   <script defer src="js/data.js?v=3"></script>
   <script defer src="js/selection.js"></script>
+  <script defer src="js/services.js?v=1"></script>
 </head>
 <body>
   <header class="site-header">
     <div class="site-header__inner">
       <a class="site-header__logo" href="index.html"><img class="brand-mark" src="images/harp-logo.svg" width="42" height="42" alt=""> РЕЗОНАНС</a>
 
+      <button class="button button--secondary account-launcher" id="open-account" type="button">Войти / Регистрация</button>
       <nav class="site-nav" aria-label="Основная навигация">
         <ul class="site-nav__list">
           <li class="site-nav__item"><a class="site-nav__link" href="index.html">Главная</a></li>
@@ -82,5 +84,53 @@
       <p class="site-footer__bottom">© 2026 Резонанс. Все права защищены. Учебный магазин, контакты и цены демонстрационные.</p>
     </div>
   </footer>
+
+    <dialog class="service-dialog" id="account-dialog" aria-labelledby="account-title">
+      <div class="service-dialog__heading">
+        <h2 id="account-title">Аккаунт</h2>
+        <form method="dialog"><button class="button button--secondary" aria-label="Закрыть аккаунт">Закрыть</button></form>
+      </div>
+      <p>Учебный аккаунт сохраняется в этом браузере на этом устройстве. Используйте отдельный пароль для демонстрации.</p>
+      <div id="account-profile" hidden>
+        <p id="account-name"></p>
+        <button class="button button--secondary" id="account-logout" type="button">Выйти</button>
+      </div>
+      <div id="account-forms">
+        <div class="service-tabs">
+          <button class="button button--secondary" id="show-login" type="button" aria-pressed="true">Войти</button>
+          <button class="button button--secondary" id="show-register" type="button" aria-pressed="false">Регистрация</button>
+        </div>
+        <form id="account-form" class="service-form">
+          <label id="register-name-field" hidden>Имя
+            <input class="order-form__input" id="register-name" autocomplete="name" maxlength="80">
+          </label>
+          <label>E-mail
+            <input class="order-form__input" id="account-email" type="email" autocomplete="username" required maxlength="254">
+          </label>
+          <label>Пароль
+            <input class="order-form__input" id="account-password" type="password" autocomplete="current-password" required minlength="8" maxlength="128">
+          </label>
+          <p>Минимум 8 символов.</p>
+          <button class="button button--primary" id="account-submit">Войти</button>
+        </form>
+      </div>
+      <p id="account-status" role="status"></p>
+    </dialog>
+    <button class="button button--primary chat-launcher" type="button" id="open-chat">Чат с консультантом</button>
+    <dialog class="service-dialog chat-dialog" id="chat-dialog" aria-labelledby="chat-title">
+      <div class="service-dialog__heading">
+        <h2 id="chat-title">Чат с консультантом</h2>
+        <form method="dialog"><button class="button button--secondary" aria-label="Закрыть чат">Закрыть</button></form>
+      </div>
+      <p>Учебный чат. Сообщения сохраняются в этом браузере, ответы консультанта не предусмотрены.</p>
+      <div class="chat-messages" id="chat-messages" role="log" aria-label="Ваши сообщения"></div>
+      <form id="chat-form" class="service-form">
+        <label for="chat-text">Ваш вопрос</label>
+        <textarea class="order-form__textarea" id="chat-text" required maxlength="2000" rows="3" placeholder="Напишите об инструменте или заявке"></textarea>
+        <button class="button button--primary">Добавить сообщение</button>
+      </form>
+      <p id="chat-status" role="status"></p>
+    </dialog>
+
 </body>
 </html>

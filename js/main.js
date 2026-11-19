@@ -32,6 +32,7 @@ function validateField(field) {
     return true;
   }
 
+  if (field.disabled) return true;
   const value = field.value.trim();
 
   if (field.required && value === '') {
@@ -49,13 +50,18 @@ function validateField(field) {
     return false;
   }
 
+  if (field.type === 'number' && !field.checkValidity()) {
+    showError(field, 'Укажите целое количество от 1 до 20');
+    return false;
+  }
+
   return true;
 }
 
 // ===== Проверка форм заявки =====
 document.querySelectorAll('.order-form').forEach((form) => {
   const successMessage = form.querySelector('.success-message');
-  const fields = form.querySelectorAll('input[required], select[required], textarea[required], input[type="tel"]');
+  const fields = form.querySelectorAll('.order-form__field input, .order-form__field select, .order-form__field textarea');
 
   fields.forEach((field) => {
     field.addEventListener('input', () => clearError(field));
@@ -88,11 +94,6 @@ document.querySelectorAll('.order-form').forEach((form) => {
       savedProduct.value = product;
     }
 
-    // Модальное окно закрывается автоматически через 2 секунды
-    const dialog = form.closest('dialog');
-    if (dialog) {
-      setTimeout(() => dialog.close(), 2000);
-    }
   });
 });
 
@@ -123,6 +124,8 @@ if (orderDialog) {
       resetDialogState();
       productInput.value = product;
       productLabel.textContent = product;
+      const delivery = document.getElementById('request-delivery');
+      if (delivery) delivery.dispatchEvent(new Event('change'));
       orderDialog.showModal();
     });
   });
