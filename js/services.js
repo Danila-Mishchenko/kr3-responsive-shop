@@ -7,6 +7,7 @@ const accountStatus = document.getElementById('account-status');
 const accountButton = document.getElementById('open-account');
 let registration = false;
 let busy = false;
+let returnToRequest = false;
 
 function readAccounts() {
   const value = JSON.parse(localStorage.getItem('resonance-accounts') || '[]');
@@ -29,6 +30,7 @@ function renderAccount() {
   document.getElementById('account-forms').hidden = Boolean(account);
   document.getElementById('account-name').textContent = account ? account.name + ' · ' + account.email : '';
   accountButton.textContent = account ? 'Мой аккаунт' : 'Войти / Регистрация';
+  syncRequestAccount();
 }
 
 function setAccountMode(register) {
@@ -104,6 +106,11 @@ accountForm.addEventListener('submit', async (event) => {
     accountForm.reset();
     renderAccount();
     accountStatus.textContent = 'Вы вошли в учебный аккаунт.';
+    if (returnToRequest) {
+      returnToRequest = false;
+      accountDialog.close();
+      document.querySelector('#request-phone, #order-phone')?.focus();
+    }
   } catch (error) {
     accountStatus.textContent = error.message || 'Не удалось открыть аккаунт. Проверьте доступ к хранилищу.';
   } finally {
@@ -112,6 +119,39 @@ accountForm.addEventListener('submit', async (event) => {
   }
 });
 renderAccount();
+
+// Данные аккаунта для заявки
+function syncRequestAccount() {
+  const fields = document.getElementById('request-fields');
+  if (!fields) return;
+  const account = currentAccount();
+  fields.disabled = !account;
+  document.getElementById('request-login').hidden = Boolean(account);
+  document.getElementById('request-account-summary').textContent = account
+    ? 'Заявка от ' + account.name + ' · ' + account.email
+    : 'Для оформления заявки войдите или зарегистрируйтесь.';
+  for (const [id, value] of [['order-name', account?.name], ['order-email', account?.email]]) {
+    const field = document.getElementById(id);
+    field.value = value || '';
+    field.readOnly = Boolean(account);
+    field.closest('.order-form__field').hidden = Boolean(account);
+  }
+}
+
+const requestLogin = document.getElementById('request-login');
+if (requestLogin) {
+  requestLogin.addEventListener('click', () => {
+    returnToRequest = true;
+    setAccountMode(false);
+    accountDialog.showModal();
+  });
+  const requestForm = document.getElementById('order-form');
+  requestForm.addEventListener('reset', () => setTimeout(() => {
+    syncRequestAccount();
+    deliverySelect?.dispatchEvent(new Event('change'));
+  }, 0));
+}
+accountDialog.addEventListener('close', () => { returnToRequest = false; });
 
 // Чат
 const chatDialog = document.getElementById('chat-dialog');
@@ -130,10 +170,13 @@ function renderMessages() {
   for (const message of messages) {
     const bubble = document.createElement('p');
     bubble.className = 'chat-message';
+    const sender = document.createElement('strong');
+    sender.className = 'chat-message__sender';
+    sender.textContent = 'Вы';
     const time = document.createElement('time');
     const date = new Date(message.time);
     time.textContent = Number.isNaN(date.getTime()) ? '' : date.toLocaleString('ru-RU');
-    bubble.append(document.createTextNode(message.text), time);
+    bubble.append(sender, document.createTextNode(message.text), time);
     messagesBox.append(bubble);
   }
   messagesBox.scrollTop = messagesBox.scrollHeight;

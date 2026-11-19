@@ -8,11 +8,11 @@
   <link rel="icon" href="images/harp-logo.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/responsive.css">
-  <link rel="stylesheet" href="css/music.css?v=4">
+  <link rel="stylesheet" href="css/music.css?v=5">
   <script defer src="js/data.js?v=3"></script>
   <script defer src="js/store.js?v=4"></script>
   <script defer src="js/selection.js"></script>
-  <script defer src="js/services.js?v=1"></script>
+  <script defer src="js/services.js?v=2"></script>
 </head>
 <body>
   <header class="site-header">
@@ -317,6 +317,13 @@
     <p class="order-dialog__product">Выбранный товар: <strong id="order-dialog-product">—</strong></p>
 
     <form class="order-form" id="order-form" action="#" method="post" novalidate>
+      <div class="request-account" id="request-account">
+        <p id="request-account-summary" role="status"></p>
+        <button class="button button--primary" id="request-login" type="button">Войти или зарегистрироваться</button>
+      </div>
+      <fieldset class="request-fields" id="request-fields" disabled>
+        <legend class="request-fields__legend">Данные заявки</legend>
+
       <input type="hidden" name="product" id="order-product">
 
       <p class="order-form__hint">Поля, отмеченные звёздочкой, обязательны.</p>
@@ -383,6 +390,7 @@
       </div>
 
       <p class="success-message" role="status" hidden>Учебная заявка заполнена. Данные остаются на этой странице.</p>
+          </fieldset>
     </form>
   </dialog>
 
@@ -414,7 +422,7 @@
       <p class="site-footer__bottom">© 2026 Резонанс. Все права защищены. Учебный магазин, контакты и цены демонстрационные.</p>
     </div>
   </footer>
-  <script src="js/main.js?v=2"></script>
+  <script src="js/main.js?v=3"></script>
 
     <dialog class="service-dialog" id="account-dialog" aria-labelledby="account-title">
       <div class="service-dialog__heading">
@@ -458,7 +466,7 @@
       <form id="chat-form" class="service-form">
         <label for="chat-text">Ваш вопрос</label>
         <textarea class="order-form__textarea" id="chat-text" required maxlength="2000" rows="3" placeholder="Напишите об инструменте или заявке"></textarea>
-        <button class="button button--primary">Добавить сообщение</button>
+        <button class="button button--primary">Отправить</button>
       </form>
       <p id="chat-status" role="status"></p>
     </dialog>

@@ -71,6 +71,10 @@ document.querySelectorAll('.order-form').forEach((form) => {
   form.addEventListener('submit', (event) => {
     event.preventDefault();
     successMessage.hidden = true;
+    if (!currentAccount()) {
+      accountDialog.showModal();
+      return;
+    }
 
     let firstInvalid = null;
     fields.forEach((field) => {
@@ -126,6 +130,7 @@ if (orderDialog) {
       productLabel.textContent = product;
       const delivery = document.getElementById('request-delivery');
       if (delivery) delivery.dispatchEvent(new Event('change'));
+      syncRequestAccount();
       orderDialog.showModal();
     });
   });
