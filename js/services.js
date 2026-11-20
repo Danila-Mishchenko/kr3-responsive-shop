@@ -29,7 +29,7 @@ function renderAccount() {
   document.getElementById('account-profile').hidden = !account;
   document.getElementById('account-forms').hidden = Boolean(account);
   document.getElementById('account-name').textContent = account ? account.name + ' · ' + account.email : '';
-  accountButton.textContent = account ? 'Мой аккаунт' : 'Войти / Регистрация';
+  accountButton.textContent = account ? 'Мой аккаунт' : 'Вход и регистрация';
   syncRequestAccount();
 }
 
