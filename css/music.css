@@ -1299,7 +1299,7 @@ h2 {
   border-radius: 12px;
 }
 .shop-feature,
-.guide-hero {
+.lesson-hero {
   display: grid;
   align-items: center;
   gap: clamp(20px, 4vw, 52px);
@@ -1309,7 +1309,7 @@ h2 {
   background: #eee8dc;
 }
 .shop-feature img,
-.guide-hero img {
+.lesson-hero img {
   display: block;
   width: 100%;
   height: auto;
@@ -1362,11 +1362,8 @@ h2 {
 }
 @media (min-width: 768px) {
   .shop-feature,
-  .guide-hero {
+  .lesson-hero {
     grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
-  }
-  .page-guide .shop-feature:nth-of-type(odd) img {
-    order: 1;
   }
 }
 @media (max-width: 767px) {
@@ -1401,4 +1398,21 @@ h2 {
   max-width: 46ch;
   line-height: 1.7;
   color: var(--color-muted);
+}
+
+.lesson-programs article {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.lesson-programs article p,
+.lesson-programs article h3 {
+  margin: 0;
+}
+.lesson-programs article .eyebrow {
+  color: var(--color-primary);
+}
+.lesson-programs article .button {
+  margin-top: auto;
+  align-self: flex-start;
 }
