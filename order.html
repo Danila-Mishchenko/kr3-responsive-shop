@@ -1,187 +1,468 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Заявка на инструмент — Резонанс">
-  <title>Заявка на инструмент — Резонанс</title>
-  <link rel="icon" href="images/harp-logo.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/responsive.css">
-  <link rel="stylesheet" href="css/music.css?v=8">
-  <script defer src="js/data.js?v=3"></script>
-  <script defer src="js/store.js?v=4"></script>
-  <script defer src="js/services.js?v=3"></script>
-</head>
-<body>
-  <header class="site-header">
-    <div class="site-header__inner">
-      <a class="site-header__logo" href="index.html"><img class="brand-mark" src="images/harp-logo.svg" width="42" height="42" alt=""> РЕЗОНАНС</a>
-
-      <nav class="site-nav" aria-label="Основная навигация">
-        <ul class="site-nav__list">
-          <li class="site-nav__item"><a class="site-nav__link" href="index.html">Главная</a></li>
-          <li class="site-nav__item"><a class="site-nav__link site-nav__link--active" href="catalog.html">Каталог</a></li>
-          <li class="site-nav__item"><a class="site-nav__link" href="favorites.html">Избранное</a></li>
-          <li class="site-nav__item"><a class="site-nav__link" href="compare.html">Сравнение</a></li>
-          <li class="site-nav__item"><a class="site-nav__link" href="contacts.html">Контакты</a></li>
-          <li class="site-nav__item"><button class="site-nav__link site-nav__account" id="open-account" type="button">Вход и регистрация</button></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-
-  <main class="page">
-    <nav class="breadcrumbs" aria-label="Хлебные крошки">
-      <a class="breadcrumbs__link" href="index.html">Главная</a>
-      <span class="breadcrumbs__current">Заявка</span>
-    </nav>
-
-    <section class="section">
-      <h1 class="section__title">Оформление заявки</h1>
-      <p>Выберите инструмент и заполните форму. Поля со звёздочкой обязательны.</p>
-
-            <form class="order-form" id="order-form" action="#" method="post" novalidate>
-      <div class="request-account" id="request-account">
-        <p id="request-account-summary" role="status"></p>
-        <button class="button button--primary" id="request-login" type="button">Войти или зарегистрироваться</button>
-      </div>
-      <fieldset class="request-fields" id="request-fields" disabled>
-        <legend class="request-fields__legend">Данные заявки</legend>
-
-        <div class="order-form__field">
-          <label class="order-form__label" for="order-name">
-            Имя <span class="order-form__required" aria-hidden="true">*</span>
-          </label>
-          <input class="order-form__input" id="order-name" name="name" type="text"
-                 autocomplete="name" aria-describedby="order-name-error" required>
-          <p class="order-form__error" id="order-name-error" role="alert" hidden></p>
-        </div>
-
-        <div class="order-form__field">
-          <label class="order-form__label" for="order-email">
-            E-mail <span class="order-form__required" aria-hidden="true">*</span>
-          </label>
-          <input class="order-form__input" id="order-email" name="email" type="email"
-                 autocomplete="email" inputmode="email" aria-describedby="order-email-error" required>
-          <p class="order-form__error" id="order-email-error" role="alert" hidden></p>
-        </div>
-
-        <div class="order-form__field">
-          <label class="order-form__label" for="order-phone">Телефон</label>
-          <input class="order-form__input" id="order-phone" name="phone" type="tel"
-                 autocomplete="tel" inputmode="tel" placeholder="+7 (900) 000-00-00"
-                 aria-describedby="order-phone-hint order-phone-error">
-          <p class="order-form__hint" id="order-phone-hint">Необязательно. Формат: +7 (900) 000-00-00</p>
-          <p class="order-form__error" id="order-phone-error" role="alert" hidden></p>
-        </div>
-
-        <div class="order-form__field">
-          <label class="order-form__label" for="order-product-select">
-            Товар <span class="order-form__required" aria-hidden="true">*</span>
-          </label>
-          <select class="order-form__select" id="order-product-select" name="product"
-                  aria-describedby="order-product-error" required>
-            <option value="">Выберите товар</option>
-            <option value="acoustic">Акустическая гитара Folk D1</option>
-            <option value="electric">Электрогитара Studio ST</option>
-            <option value="piano">Цифровое пианино Keys 88</option>
-            <option value="drums">Электронные барабаны Beat Kit</option>
-            <option value="sax">Альт-саксофон Alto Brass</option>
-            <option value="violin">Скрипка Arco 4/4</option>
-            <option value="bass">Бас-гитара Lowline JB</option>
-            <option value="ukulele">Укулеле Soprano U1</option>
-            <option value="synth">Синтезатор Pulse Mini</option>
-            <option value="cajon">Кахон Rhythm Box</option>
-            <option value="classical">Классическая гитара Nylon C3</option>
-          </select>
-          <p class="order-form__error" id="order-product-error" role="alert" hidden></p>
-        </div>
-
-        <div class="order-form__field order-form__field--wide">
-          <label class="order-form__label" for="order-comment">Комментарий</label>
-          <textarea class="order-form__textarea" id="order-comment" name="comment" rows="4"
-                    aria-describedby="order-comment-hint"></textarea>
-          <p class="order-form__hint" id="order-comment-hint">Необязательно. Например, удобное время связи.</p>
-        </div>
-
-        <div class="order-form__field order-form__field--wide">
-          <label class="order-form__checkbox" for="order-consent">
-            <input type="checkbox" id="order-consent" name="consent"
-                   aria-describedby="order-consent-error" required>
-            <span>
-              Согласен на обработку персональных данных
-              <span class="order-form__required" aria-hidden="true">*</span>
-            </span>
-          </label>
-          <p class="order-form__error" id="order-consent-error" role="alert" hidden></p>
-        </div>
-
-        <div class="order-form__actions">
-          <button class="button button--primary" type="submit">Отправить заявку</button>
-        </div>
-
-        <p class="success-message" role="status" hidden>Учебная заявка заполнена. Спасибо!</p>
-            </fieldset>
-    </form>
-    </section>
-  </main>
-
-  <footer class="site-footer" id="contacts">
-    <div class="site-footer__inner">
-      <div class="site-footer__grid">
-        <div>
-          <a class="site-footer__brand" href="index.html"><img class="brand-mark" src="images/harp-logo.svg" width="42" height="42" alt=""> РЕЗОНАНС</a>
-          <p>Музыкальные инструменты для занятий, репетиций и выступлений.</p>
-        </div>
-        <nav aria-label="Разделы в подвале">
-          <h2>Покупателям</h2>
-          <ul>
-            <li><a href="catalog.html">Каталог</a></li>
-            <li><a href="favorites.html">Избранное</a></li>
-            <li><a href="index.html#faq">Частые вопросы</a></li>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Заявка на инструмент — Резонанс" />
+    <title>Заявка на инструмент — Резонанс</title>
+    <link rel="icon" href="images/harp-logo.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+    <link rel="stylesheet" href="css/music.css?v=9" />
+    <script defer src="js/data.js?v=3"></script>
+    <script defer src="js/store.js?v=4"></script>
+    <script defer src="js/services.js?v=4"></script>
+    <script defer src="js/appearance.js"></script>
+  </head>
+  <body id="top" class="page-order">
+    <header class="site-header">
+      <div class="site-header__inner">
+        <a class="site-header__logo" href="index.html">
+          <img class="brand-mark" src="images/harp-logo.svg" width="48" height="48" alt="" />
+          <span>
+            РЕЗОНАНС
+            <small>МУЗЫКАЛЬНЫЕ ИНСТРУМЕНТЫ</small>
+          </span>
+        </a>
+        <nav class="site-nav" aria-label="Основная навигация">
+          <ul class="site-nav__list">
+            <li class="site-nav__item"><a class="site-nav__link" href="index.html">Главная</a></li>
+            <li class="site-nav__item">
+              <a class="site-nav__link site-nav__link--active" href="catalog.html">Каталог</a>
+            </li>
+            <li class="site-nav__item">
+              <a class="site-nav__link" href="about.html">О магазине</a>
+            </li>
+            <li class="site-nav__item">
+              <a class="site-nav__link" href="contacts.html">Контакты</a>
+            </li>
           </ul>
         </nav>
-        <div>
-          <h2>Контакты</h2>
-          <address>
-            <a href="tel:+79000000000">+7 (900) 000-00-00</a>
-            <a href="mailto:info@example.com">info@example.com</a>
-            <a href="contacts.html#map">Москва · посмотреть на карте</a>
-          </address>
-          <p>Пн–Сб, 10:00–19:00</p>
+        <button class="button button--secondary site-nav__account" id="open-account" type="button">
+          <img
+            class="icon"
+            src="images/icons/user.svg"
+            width="24"
+            height="24"
+            alt=""
+            aria-hidden="true"
+          />
+          <span id="account-button-label">Вход и регистрация</span>
+        </button>
+      </div>
+    </header>
+
+    <main class="page">
+      <nav class="breadcrumbs" aria-label="Хлебные крошки">
+        <a class="breadcrumbs__link" href="index.html">Главная</a>
+        <span class="breadcrumbs__current">Заявка</span>
+      </nav>
+
+      <section class="section">
+        <h1 class="section__title">Оформление заявки</h1>
+        <p>Выберите инструмент и заполните форму. Поля со звёздочкой обязательны.</p>
+
+        <form class="order-form" id="order-form" action="#" method="post" novalidate>
+          <div class="request-account" id="request-account">
+            <p id="request-account-summary" role="status"></p>
+            <button class="button button--primary" id="request-login" type="button">
+              Войти или зарегистрироваться
+            </button>
+          </div>
+          <fieldset class="request-fields" id="request-fields" disabled>
+            <legend class="request-fields__legend">Данные заявки</legend>
+
+            <div class="order-form__field">
+              <label class="order-form__label" for="order-name">
+                Имя
+                <span class="order-form__required" aria-hidden="true">*</span>
+              </label>
+              <input
+                class="order-form__input"
+                id="order-name"
+                name="name"
+                type="text"
+                autocomplete="name"
+                aria-describedby="order-name-error"
+                required
+              />
+              <p class="order-form__error" id="order-name-error" role="alert" hidden></p>
+            </div>
+
+            <div class="order-form__field">
+              <label class="order-form__label" for="order-email">
+                E-mail
+                <span class="order-form__required" aria-hidden="true">*</span>
+              </label>
+              <input
+                class="order-form__input"
+                id="order-email"
+                name="email"
+                type="email"
+                autocomplete="email"
+                inputmode="email"
+                aria-describedby="order-email-error"
+                required
+              />
+              <p class="order-form__error" id="order-email-error" role="alert" hidden></p>
+            </div>
+
+            <div class="order-form__field">
+              <label class="order-form__label" for="order-phone">Телефон</label>
+              <input
+                class="order-form__input"
+                id="order-phone"
+                name="phone"
+                type="tel"
+                autocomplete="tel"
+                inputmode="tel"
+                placeholder="+7 (900) 000-00-00"
+                aria-describedby="order-phone-hint order-phone-error"
+              />
+              <p class="order-form__hint" id="order-phone-hint">
+                Необязательно. Формат: +7 (900) 000-00-00
+              </p>
+              <p class="order-form__error" id="order-phone-error" role="alert" hidden></p>
+            </div>
+
+            <div class="order-form__field">
+              <label class="order-form__label" for="order-product-select">
+                Товар
+                <span class="order-form__required" aria-hidden="true">*</span>
+              </label>
+              <select
+                class="order-form__select"
+                id="order-product-select"
+                name="product"
+                aria-describedby="order-product-error"
+                required
+              >
+                <option value="">Выберите товар</option>
+                <option value="acoustic">Акустическая гитара Folk D1</option>
+                <option value="electric">Электрогитара Studio ST</option>
+                <option value="piano">Цифровое пианино Keys 88</option>
+                <option value="drums">Электронные барабаны Beat Kit</option>
+                <option value="sax">Альт-саксофон Alto Brass</option>
+                <option value="violin">Скрипка Arco 4/4</option>
+                <option value="bass">Бас-гитара Lowline JB</option>
+                <option value="ukulele">Укулеле Soprano U1</option>
+                <option value="synth">Синтезатор Pulse Mini</option>
+                <option value="cajon">Кахон Rhythm Box</option>
+                <option value="classical">Классическая гитара Nylon C3</option>
+              </select>
+              <p class="order-form__error" id="order-product-error" role="alert" hidden></p>
+            </div>
+
+            <div class="order-form__field order-form__field--wide">
+              <label class="order-form__label" for="order-comment">Комментарий</label>
+              <textarea
+                class="order-form__textarea"
+                id="order-comment"
+                name="comment"
+                rows="4"
+                aria-describedby="order-comment-hint"
+              ></textarea>
+              <p class="order-form__hint" id="order-comment-hint">
+                Необязательно. Например, удобное время связи.
+              </p>
+            </div>
+
+            <div class="order-form__field order-form__field--wide">
+              <label class="order-form__checkbox" for="order-consent">
+                <input
+                  type="checkbox"
+                  id="order-consent"
+                  name="consent"
+                  aria-describedby="order-consent-error"
+                  required
+                />
+                <span>
+                  Согласен на обработку персональных данных
+                  <span class="order-form__required" aria-hidden="true">*</span>
+                </span>
+              </label>
+              <p class="order-form__error" id="order-consent-error" role="alert" hidden></p>
+            </div>
+
+            <div class="order-form__actions">
+              <button class="button button--primary" type="submit">Отправить заявку</button>
+            </div>
+
+            <p class="success-message" role="status" hidden>
+              Заявка заполнена. Для подтверждения свяжитесь с магазином.
+            </p>
+          </fieldset>
+        </form>
+      </section>
+    </main>
+
+    <footer class="site-footer" id="contacts">
+      <div class="site-footer__inner">
+        <div class="footer-intro">
+          <a class="site-footer__brand" href="index.html">
+            <img class="brand-mark" src="images/harp-logo.svg" width="48" height="48" alt="" />
+            РЕЗОНАНС
+          </a>
+          <p>Ваш следующий звук начинается здесь.</p>
+        </div>
+        <div class="site-footer__grid">
+          <nav aria-label="Карта сайта">
+            <h2>Навигация</h2>
+            <ul>
+              <li>
+                <a href="index.html">
+                  <img
+                    class="icon"
+                    src="images/icons/home.svg"
+                    width="24"
+                    height="24"
+                    alt=""
+                    aria-hidden="true"
+                  />
+                  <span>Главная</span>
+                </a>
+              </li>
+              <li>
+                <a href="catalog.html">
+                  <img
+                    class="icon"
+                    src="images/icons/grid.svg"
+                    width="24"
+                    height="24"
+                    alt=""
+                    aria-hidden="true"
+                  />
+                  <span>Каталог</span>
+                </a>
+              </li>
+              <li>
+                <a href="about.html">
+                  <img
+                    class="icon"
+                    src="images/icons/about.svg"
+                    width="24"
+                    height="24"
+                    alt=""
+                    aria-hidden="true"
+                  />
+                  <span>О магазине</span>
+                </a>
+              </li>
+              <li>
+                <a href="contacts.html">
+                  <img
+                    class="icon"
+                    src="images/icons/pin.svg"
+                    width="24"
+                    height="24"
+                    alt=""
+                    aria-hidden="true"
+                  />
+                  <span>Контакты</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <div>
+            <h2>Контакты</h2>
+            <div class="contact-row">
+              <img
+                class="icon"
+                src="images/icons/pin.svg"
+                width="24"
+                height="24"
+                alt=""
+                aria-hidden="true"
+              />
+              <div>
+                <h3>Локация</h3>
+                <a href="https://yandex.ru/maps/?text=Москва%2C%20Тверская%2012">
+                  Москва, ул. Тверская, д. 12
+                </a>
+              </div>
+            </div>
+            <div class="contact-row">
+              <img
+                class="icon"
+                src="images/icons/phone.svg"
+                width="24"
+                height="24"
+                alt=""
+                aria-hidden="true"
+              />
+              <div>
+                <h3>Телефон</h3>
+                <a href="tel:+79991234567">+7 (999) 123-45-67</a>
+              </div>
+            </div>
+            <div class="contact-row">
+              <img
+                class="icon"
+                src="images/icons/clock.svg"
+                width="24"
+                height="24"
+                alt=""
+                aria-hidden="true"
+              />
+              <div>
+                <h3>Время работы</h3>
+                <span>Пн–Сб 10:00–20:00 · Вс 11:00–18:00</span>
+              </div>
+            </div>
+            <div class="contact-row">
+              <img
+                class="icon"
+                src="images/icons/mail.svg"
+                width="24"
+                height="24"
+                alt=""
+                aria-hidden="true"
+              />
+              <div>
+                <h3>Почта</h3>
+                <a href="mailto:hello@resonance.example">hello@resonance.example</a>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h2>Социальные сети</h2>
+            <div class="social-links">
+              <a href="https://t.me/">
+                <img
+                  class="icon"
+                  src="images/icons/telegram.svg"
+                  width="24"
+                  height="24"
+                  alt=""
+                  aria-hidden="true"
+                />
+                <span>Telegram</span>
+              </a>
+              <a href="https://vk.com/">
+                <img
+                  class="icon"
+                  src="images/icons/vk.svg"
+                  width="24"
+                  height="24"
+                  alt=""
+                  aria-hidden="true"
+                />
+                <span>ВКонтакте</span>
+              </a>
+            </div>
+            <h2 class="footer-subtitle">Ваш выбор</h2>
+            <ul>
+              <li>
+                <a href="favorites.html">
+                  <img
+                    class="icon"
+                    src="images/icons/heart.svg"
+                    width="24"
+                    height="24"
+                    alt=""
+                    aria-hidden="true"
+                  />
+                  <span>Избранное</span>
+                </a>
+              </li>
+              <li>
+                <a href="compare.html">
+                  <img
+                    class="icon"
+                    src="images/icons/compare.svg"
+                    width="24"
+                    height="24"
+                    alt=""
+                    aria-hidden="true"
+                  />
+                  <span>Сравнение</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="site-footer__bottom">
+          <span>© 2026 Резонанс. Все права защищены.</span>
+          <a href="contacts.html">
+            <img
+              class="icon"
+              src="images/icons/mail.svg"
+              width="24"
+              height="24"
+              alt=""
+              aria-hidden="true"
+            />
+            Связаться с магазином
+          </a>
         </div>
       </div>
-      <p class="site-footer__bottom">© 2026 Резонанс. Все права защищены. Учебный магазин, контакты и цены демонстрационные.</p>
-    </div>
-  </footer>
+    </footer>
 
-  <script src="js/main.js?v=3"></script>
+    <script src="js/main.js?v=3"></script>
 
     <dialog class="service-dialog" id="account-dialog" aria-labelledby="account-title">
       <div class="service-dialog__heading">
         <h2 id="account-title">Аккаунт</h2>
-        <form method="dialog"><button class="button button--secondary" aria-label="Закрыть аккаунт">Закрыть</button></form>
+        <form method="dialog">
+          <button class="button button--secondary" aria-label="Закрыть аккаунт">Закрыть</button>
+        </form>
       </div>
-      <p>Учебный аккаунт сохраняется в этом браузере на этом устройстве. Используйте отдельный пароль для демонстрации.</p>
+      <p>Профиль сохраняется в этом браузере на вашем устройстве.</p>
       <div id="account-profile" hidden>
         <p id="account-name"></p>
         <button class="button button--secondary" id="account-logout" type="button">Выйти</button>
       </div>
       <div id="account-forms">
         <div class="service-tabs">
-          <button class="button button--secondary" id="show-login" type="button" aria-pressed="true">Войти</button>
-          <button class="button button--secondary" id="show-register" type="button" aria-pressed="false">Регистрация</button>
+          <button
+            class="button button--secondary"
+            id="show-login"
+            type="button"
+            aria-pressed="true"
+          >
+            Войти
+          </button>
+          <button
+            class="button button--secondary"
+            id="show-register"
+            type="button"
+            aria-pressed="false"
+          >
+            Регистрация
+          </button>
         </div>
         <form id="account-form" class="service-form">
-          <label id="register-name-field" hidden>Имя
-            <input class="order-form__input" id="register-name" autocomplete="name" maxlength="80">
+          <label id="register-name-field" hidden>
+            Имя
+            <input
+              class="order-form__input"
+              id="register-name"
+              autocomplete="name"
+              maxlength="80"
+            />
           </label>
-          <label>E-mail
-            <input class="order-form__input" id="account-email" type="email" autocomplete="username" required maxlength="254">
+          <label>
+            E-mail
+            <input
+              class="order-form__input"
+              id="account-email"
+              type="email"
+              autocomplete="username"
+              required
+              maxlength="254"
+            />
           </label>
-          <label>Пароль
-            <input class="order-form__input" id="account-password" type="password" autocomplete="current-password" required minlength="8" maxlength="128">
+          <label>
+            Пароль
+            <input
+              class="order-form__input"
+              id="account-password"
+              type="password"
+              autocomplete="current-password"
+              required
+              minlength="8"
+              maxlength="128"
+            />
           </label>
           <p>Минимум 8 символов.</p>
           <button class="button button--primary" id="account-submit">Войти</button>
@@ -189,21 +470,50 @@
       </div>
       <p id="account-status" role="status"></p>
     </dialog>
-    <button class="button button--primary chat-launcher" type="button" id="open-chat">Чат с консультантом</button>
+    <button class="button button--primary chat-launcher" type="button" id="open-chat">
+      <img
+        class="icon"
+        src="images/icons/chat.svg"
+        width="24"
+        height="24"
+        alt=""
+        aria-hidden="true"
+      />
+      <span>Чат с консультантом</span>
+    </button>
     <dialog class="service-dialog chat-dialog" id="chat-dialog" aria-labelledby="chat-title">
       <div class="service-dialog__heading">
         <h2 id="chat-title">Чат с консультантом</h2>
-        <form method="dialog"><button class="button button--secondary" aria-label="Закрыть чат">Закрыть</button></form>
+        <form method="dialog">
+          <button class="button button--secondary" aria-label="Закрыть чат">Закрыть</button>
+        </form>
       </div>
-      <p>Учебный чат. Сообщения сохраняются в этом браузере, ответы консультанта не предусмотрены.</p>
+      <p>Ваши сообщения сохраняются на этом устройстве. Вы можете вернуться к переписке позже.</p>
       <div class="chat-messages" id="chat-messages" role="log" aria-label="Ваши сообщения"></div>
       <form id="chat-form" class="service-form">
         <label for="chat-text">Ваш вопрос</label>
-        <textarea class="order-form__textarea" id="chat-text" required maxlength="2000" rows="3" placeholder="Напишите об инструменте или заявке"></textarea>
+        <textarea
+          class="order-form__textarea"
+          id="chat-text"
+          required
+          maxlength="2000"
+          rows="3"
+          placeholder="Напишите об инструменте или заявке"
+        ></textarea>
         <button class="button button--primary">Отправить</button>
       </form>
       <p id="chat-status" role="status"></p>
     </dialog>
 
-</body>
+    <a class="back-to-top" href="#top" aria-label="Вернуться наверх" hidden>
+      <img
+        class="icon"
+        src="images/icons/up.svg"
+        width="24"
+        height="24"
+        alt=""
+        aria-hidden="true"
+      />
+    </a>
+  </body>
 </html>

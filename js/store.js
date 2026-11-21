@@ -12,7 +12,9 @@ if (filtersForm) {
   const query = new URLSearchParams(location.search);
 
   panel.open = desktop.matches;
-  desktop.addEventListener('change', (event) => { panel.open = event.matches; });
+  desktop.addEventListener('change', (event) => {
+    panel.open = event.matches;
+  });
 
   const selectedCategories = query.getAll('category');
   for (const checkbox of filtersForm.querySelectorAll('[name="category"]')) {
@@ -21,23 +23,37 @@ if (filtersForm) {
   fromInput.value = query.get('price-from') || '';
   toInput.value = query.get('price-to') || '';
 
+  let catalogPage = 1;
+  const pageSize = 8;
+
   function filterCards() {
     const categories = new FormData(filtersForm).getAll('category');
     const from = fromInput.value === '' ? 0 : Number(fromInput.value);
     const to = toInput.value === '' ? Infinity : Number(toInput.value);
-    let matches = 0;
+    const matches = [];
 
     for (const card of cards) {
       const price = Number(card.dataset.price);
       const categoryMatches = categories.length === 0 || categories.includes(card.dataset.category);
-      card.hidden = !categoryMatches || price < from || price > to;
-      if (!card.hidden) matches += 1;
+      card.hidden = true;
+      if (categoryMatches && price >= from && price <= to) matches.push(card);
     }
 
-    count.textContent = matches > 0 ? 'Найдено: ' + matches : 'Подходящих инструментов нет.';
+    const totalPages = Math.max(1, Math.ceil(matches.length / pageSize));
+    catalogPage = Math.min(catalogPage, totalPages);
+    for (const card of matches.slice((catalogPage - 1) * pageSize, catalogPage * pageSize)) {
+      card.hidden = false;
+    }
+    count.textContent = matches.length
+      ? 'Найдено: ' + matches.length
+      : 'Подходящих инструментов нет.';
+    document.getElementById('catalog-page').textContent = catalogPage + ' / ' + totalPages;
+    document.getElementById('catalog-prev').disabled = catalogPage === 1;
+    document.getElementById('catalog-next').disabled = catalogPage === totalPages;
   }
 
   function applyFilters() {
+    catalogPage = 1;
     filterCards();
     if (location.protocol === 'file:') return;
 
@@ -55,7 +71,17 @@ if (filtersForm) {
     applyFilters();
   });
   filtersForm.addEventListener('reset', () => setTimeout(applyFilters, 0));
-  if (query.has('category') || fromInput.value || toInput.value) filterCards();
+  for (const [id, step] of [
+    ['catalog-prev', -1],
+    ['catalog-next', 1],
+  ]) {
+    document.getElementById(id).addEventListener('click', () => {
+      catalogPage += step;
+      filterCards();
+      document.getElementById('catalog-count').scrollIntoView({ block: 'center' });
+    });
+  }
+  filterCards();
 }
 
 // Карточка инструмента и заявка
@@ -76,8 +102,9 @@ if (instrumentTitle) {
   document.getElementById('product-description').textContent = product.description;
   document.getElementById('product-category').textContent = product.category;
   document.getElementById('product-price').textContent = price;
-  document.getElementById('product-availability').textContent =
-    product.isAvailable ? 'В наличии' : 'Нет в наличии';
+  document.getElementById('product-availability').textContent = product.isAvailable
+    ? 'В наличии'
+    : 'Нет в наличии';
   document.getElementById('spec-category').textContent = product.category;
   document.getElementById('spec-details').textContent = product.specs;
   document.getElementById('spec-price').textContent = price;

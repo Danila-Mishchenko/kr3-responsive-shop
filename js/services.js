@@ -28,8 +28,12 @@ function renderAccount() {
   const account = currentAccount();
   document.getElementById('account-profile').hidden = !account;
   document.getElementById('account-forms').hidden = Boolean(account);
-  document.getElementById('account-name').textContent = account ? account.name + ' · ' + account.email : '';
-  accountButton.textContent = account ? 'Мой аккаунт' : 'Вход и регистрация';
+  document.getElementById('account-name').textContent = account
+    ? account.name + ' · ' + account.email
+    : '';
+  document.getElementById('account-button-label').textContent = account
+    ? 'Мой аккаунт'
+    : 'Вход и регистрация';
   syncRequestAccount();
 }
 
@@ -38,7 +42,9 @@ function setAccountMode(register) {
   accountForm.reset();
   document.getElementById('register-name-field').hidden = !register;
   document.getElementById('register-name').required = register;
-  document.getElementById('account-password').autocomplete = register ? 'new-password' : 'current-password';
+  document.getElementById('account-password').autocomplete = register
+    ? 'new-password'
+    : 'current-password';
   document.getElementById('account-submit').textContent = register ? 'Зарегистрироваться' : 'Войти';
   document.getElementById('show-register').setAttribute('aria-pressed', String(register));
   document.getElementById('show-login').setAttribute('aria-pressed', String(!register));
@@ -47,14 +53,26 @@ function setAccountMode(register) {
 
 // В хранилище записывается проверочное значение пароля и случайная соль.
 async function passwordHash(password, salt) {
-  const key = await crypto.subtle.importKey('raw', new TextEncoder().encode(password), 'PBKDF2', false, ['deriveBits']);
-  const bits = await crypto.subtle.deriveBits({
-    name: 'PBKDF2',
-    salt: Uint8Array.from(salt),
-    iterations: 210000,
-    hash: 'SHA-256',
-  }, key, 256);
-  return Array.from(new Uint8Array(bits)).map((byte) => byte.toString(16).padStart(2, '0')).join('');
+  const key = await crypto.subtle.importKey(
+    'raw',
+    new TextEncoder().encode(password),
+    'PBKDF2',
+    false,
+    ['deriveBits'],
+  );
+  const bits = await crypto.subtle.deriveBits(
+    {
+      name: 'PBKDF2',
+      salt: Uint8Array.from(salt),
+      iterations: 210000,
+      hash: 'SHA-256',
+    },
+    key,
+    256,
+  );
+  return Array.from(new Uint8Array(bits))
+    .map((byte) => byte.toString(16).padStart(2, '0'))
+    .join('');
 }
 
 accountButton.addEventListener('click', () => {
@@ -62,8 +80,12 @@ accountButton.addEventListener('click', () => {
   accountStatus.textContent = '';
   accountDialog.showModal();
 });
-document.getElementById('show-login').addEventListener('click', () => { if (!busy) setAccountMode(false); });
-document.getElementById('show-register').addEventListener('click', () => { if (!busy) setAccountMode(true); });
+document.getElementById('show-login').addEventListener('click', () => {
+  if (!busy) setAccountMode(false);
+});
+document.getElementById('show-register').addEventListener('click', () => {
+  if (!busy) setAccountMode(true);
+});
 document.getElementById('account-logout').addEventListener('click', () => {
   try {
     sessionStorage.removeItem('resonance-session');
@@ -94,25 +116,27 @@ accountForm.addEventListener('submit', async (event) => {
       const salt = Array.from(crypto.getRandomValues(new Uint8Array(16)));
       const hash = await passwordHash(password, salt);
       const accounts = readAccounts();
-      if (accounts.some((account) => account.email === email)) throw new Error('Этот e-mail уже зарегистрирован.');
+      if (accounts.some((account) => account.email === email))
+        throw new Error('Этот e-mail уже зарегистрирован.');
       accounts.push({ name, email, salt, hash });
       localStorage.setItem('resonance-accounts', JSON.stringify(accounts));
     } else {
-      if (!existing || await passwordHash(password, existing.salt) !== existing.hash) {
+      if (!existing || (await passwordHash(password, existing.salt)) !== existing.hash) {
         throw new Error('Неверный e-mail или пароль.');
       }
     }
     sessionStorage.setItem('resonance-session', email);
     accountForm.reset();
     renderAccount();
-    accountStatus.textContent = 'Вы вошли в учебный аккаунт.';
+    accountStatus.textContent = 'Вы вошли в аккаунт.';
     if (returnToRequest) {
       returnToRequest = false;
       accountDialog.close();
       document.querySelector('#request-phone, #order-phone')?.focus();
     }
   } catch (error) {
-    accountStatus.textContent = error.message || 'Не удалось открыть аккаунт. Проверьте доступ к хранилищу.';
+    accountStatus.textContent =
+      error.message || 'Не удалось открыть аккаунт. Проверьте доступ к хранилищу.';
   } finally {
     busy = false;
     submit.disabled = false;
@@ -130,7 +154,10 @@ function syncRequestAccount() {
   document.getElementById('request-account-summary').textContent = account
     ? 'Заявка от ' + account.name + ' · ' + account.email
     : 'Для оформления заявки войдите или зарегистрируйтесь.';
-  for (const [id, value] of [['order-name', account?.name], ['order-email', account?.email]]) {
+  for (const [id, value] of [
+    ['order-name', account?.name],
+    ['order-email', account?.email],
+  ]) {
     const field = document.getElementById(id);
     field.value = value || '';
     field.readOnly = Boolean(account);
@@ -146,12 +173,16 @@ if (requestLogin) {
     accountDialog.showModal();
   });
   const requestForm = document.getElementById('order-form');
-  requestForm.addEventListener('reset', () => setTimeout(() => {
-    syncRequestAccount();
-    deliverySelect?.dispatchEvent(new Event('change'));
-  }, 0));
+  requestForm.addEventListener('reset', () =>
+    setTimeout(() => {
+      syncRequestAccount();
+      deliverySelect?.dispatchEvent(new Event('change'));
+    }, 0),
+  );
 }
-accountDialog.addEventListener('close', () => { returnToRequest = false; });
+accountDialog.addEventListener('close', () => {
+  returnToRequest = false;
+});
 
 // Чат
 const chatDialog = document.getElementById('chat-dialog');
@@ -160,7 +191,10 @@ const chatStatus = document.getElementById('chat-status');
 let messages = [];
 try {
   const saved = JSON.parse(localStorage.getItem('resonance-chat') || '[]');
-  if (Array.isArray(saved)) messages = saved.filter((item) => typeof item?.text === 'string' && typeof item?.time === 'string').slice(-100);
+  if (Array.isArray(saved))
+    messages = saved
+      .filter((item) => typeof item?.text === 'string' && typeof item?.time === 'string')
+      .slice(-100);
 } catch {
   chatStatus.textContent = 'История сообщений недоступна.';
 }
