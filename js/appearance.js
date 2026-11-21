@@ -23,7 +23,7 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObse
     { threshold: 0.06 },
   );
   for (const section of document.querySelectorAll(
-    '.category-grid, .sound-story, .start-grid, .editorial, .principles, .visit-banner, .contact-notes, .shop-feature, .shop-panel, .lesson-hero, .contact-route',
+    '.category-grid, .sound-story, .editorial, .principles, .visit-banner, .contact-notes, .shop-feature, .shop-panel, .lesson-hero, .contact-route',
   )) {
     section.classList.add('reveal-ready');
     observer.observe(section);
