@@ -8,9 +8,9 @@
     <link rel="icon" href="images/harp-logo.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/responsive.css" />
-    <link rel="stylesheet" href="css/music.css?v=9" />
+    <link rel="stylesheet" href="css/music.css?v=10" />
     <script defer src="js/services.js?v=4"></script>
-    <script defer src="js/appearance.js"></script>
+    <script defer src="js/appearance.js?v=2"></script>
   </head>
   <body id="top" class="page-about">
     <header class="site-header">
@@ -39,6 +39,9 @@
             </li>
             <li class="site-nav__item">
               <a class="site-nav__link" href="contacts.html">Контакты</a>
+            </li>
+            <li class="site-nav__item">
+              <a class="site-nav__link" href="guide.html">Гид по выбору</a>
             </li>
           </ul>
         </nav>
@@ -110,6 +113,24 @@
         </div>
         <a class="button button--primary" href="contacts.html">Контакты и маршрут</a>
       </section>
+      <section class="section shop-feature">
+        <img
+          src="images/electric-512.webp"
+          width="512"
+          height="512"
+          loading="lazy"
+          alt="Электрогитара Studio ST"
+        />
+        <div>
+          <h2 class="section__title">Инструменты под разные задачи</h2>
+          <p>
+            Для первых уроков важны удобный размер и простая настройка. На репетиции пригодится
+            возможность подключиться к усилителю, а в студии — записать звук. Начните с условий, в
+            которых чаще всего будете играть.
+          </p>
+          <a class="button button--secondary" href="guide.html">Подобрать инструмент</a>
+        </div>
+      </section>
     </main>
 
     <footer class="site-footer" id="contacts">
@@ -177,6 +198,12 @@
                   <span>Контакты</span>
                 </a>
               </li>
+              <li>
+                <a href="guide.html">
+                  <img class="icon" src="images/icons/music.svg" width="24" height="24" alt="" />
+                  <span>Гид по выбору</span>
+                </a>
+              </li>
             </ul>
           </nav>
           <div>
@@ -235,7 +262,6 @@
                 aria-hidden="true"
               />
               <div>
-                <h3>Почта</h3>
                 <a href="mailto:hello@resonance.example">hello@resonance.example</a>
               </div>
             </div>
@@ -422,7 +448,7 @@
     <a class="back-to-top" href="#top" aria-label="Вернуться наверх" hidden>
       <img
         class="icon"
-        src="images/icons/up.svg"
+        src="images/icons/guitar-up.svg"
         width="24"
         height="24"
         alt=""

@@ -1259,3 +1259,146 @@ h2 {
 .compare-table tr:hover td {
   background: #eaddc9;
 }
+
+/* Витрина и блоки помощи */
+.site-header {
+  background: #202724;
+  border-top-color: #dca878;
+}
+.hero {
+  background: radial-gradient(ellipse at top left, #425349, #202724 75%);
+  border-radius: 14px;
+  box-shadow: 0 20px 40px #26262224;
+}
+.hero__title {
+  text-wrap: balance;
+}
+.category-tile {
+  border-radius: 12px;
+}
+.category-tile::after {
+  content: '→';
+  position: absolute;
+  right: 12px;
+  bottom: 13px;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #fff8ec;
+  color: #282a24;
+  transition: transform 200ms;
+}
+.category-tile span {
+  padding-right: 48px;
+  padding-left: 10px;
+  overflow-wrap: anywhere;
+}
+.instrument-card {
+  border-radius: 12px;
+}
+.shop-feature,
+.guide-hero {
+  display: grid;
+  align-items: center;
+  gap: clamp(20px, 4vw, 52px);
+  padding: clamp(20px, 4vw, 44px);
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  background: #eee8dc;
+}
+.shop-feature img,
+.guide-hero img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1.45;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.shop-feature p {
+  max-width: 52ch;
+  line-height: 1.7;
+  color: var(--color-muted);
+}
+.shop-feature .button {
+  margin-top: 6px;
+}
+.shop-panel {
+  padding-block: 28px;
+  border-block: 1px solid var(--color-border);
+}
+.shop-panel__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+  gap: 16px;
+}
+.shop-panel__grid article {
+  padding: 20px;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  background: #fffcf7;
+}
+.shop-panel__grid h3 {
+  margin-top: 0;
+}
+.shop-panel__grid p {
+  color: var(--color-muted);
+  margin-bottom: 0;
+}
+.back-to-top {
+  background: #263a30;
+  border-color: #ba8b60;
+  box-shadow: 0 5px 18px #1e2a2345;
+}
+.back-to-top .icon {
+  width: 28px;
+  height: 28px;
+  filter: none;
+}
+.back-to-top:hover {
+  background: #3d5345;
+}
+@media (min-width: 768px) {
+  .shop-feature,
+  .guide-hero {
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  }
+  .page-guide .shop-feature:nth-of-type(odd) img {
+    order: 1;
+  }
+}
+@media (max-width: 767px) {
+  .site-nav__list {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    column-gap: 4px;
+  }
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .category-tile:hover::after {
+    transform: translateX(3px);
+  }
+}
+
+.contact-route {
+  padding: clamp(24px, 4vw, 44px);
+  background: #e9e2d5;
+  border-radius: 14px;
+}
+.contact-route dl {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: 24px;
+  margin: 0;
+}
+.contact-route dt {
+  font-weight: 700;
+}
+.contact-route dd {
+  margin: 8px 0 0;
+  max-width: 46ch;
+  line-height: 1.7;
+  color: var(--color-muted);
+}

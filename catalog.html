@@ -8,12 +8,12 @@
     <link rel="icon" href="images/harp-logo.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/responsive.css" />
-    <link rel="stylesheet" href="css/music.css?v=9" />
+    <link rel="stylesheet" href="css/music.css?v=10" />
     <script defer src="js/data.js?v=3"></script>
     <script defer src="js/store.js?v=5"></script>
     <script defer src="js/selection.js"></script>
     <script defer src="js/services.js?v=4"></script>
-    <script defer src="js/appearance.js"></script>
+    <script defer src="js/appearance.js?v=2"></script>
   </head>
   <body id="top" class="page-catalog">
     <header class="site-header">
@@ -42,6 +42,9 @@
             </li>
             <li class="site-nav__item">
               <a class="site-nav__link" href="contacts.html">Контакты</a>
+            </li>
+            <li class="site-nav__item">
+              <a class="site-nav__link" href="guide.html">Гид по выбору</a>
             </li>
           </ul>
         </nav>
@@ -721,6 +724,32 @@
           </nav>
         </section>
       </section>
+      <section class="section shop-panel">
+        <h2 class="section__title">Как сузить выбор</h2>
+        <div class="shop-panel__grid">
+          <article>
+            <h3>С чего начать</h3>
+            <p>
+              Выберите категорию и укажите верхнюю границу цены. Для первых занятий проверьте, что
+              потребуется в комплекте.
+            </p>
+          </article>
+          <article>
+            <h3>Что сравнить</h3>
+            <p>
+              Откройте характеристики двух моделей. Для клавишных важна механика, для гитар — размер
+              корпуса и тип струн.
+            </p>
+          </article>
+          <article>
+            <h3>Когда определились</h3>
+            <p>
+              Сохраните подходящие модели в избранном. Из карточки товара можно перейти к оформлению
+              заявки.
+            </p>
+          </article>
+        </div>
+      </section>
     </main>
 
     <dialog class="order-dialog" id="order-dialog" aria-labelledby="order-dialog-title">
@@ -957,6 +986,12 @@
                   <span>Контакты</span>
                 </a>
               </li>
+              <li>
+                <a href="guide.html">
+                  <img class="icon" src="images/icons/music.svg" width="24" height="24" alt="" />
+                  <span>Гид по выбору</span>
+                </a>
+              </li>
             </ul>
           </nav>
           <div>
@@ -1015,7 +1050,6 @@
                 aria-hidden="true"
               />
               <div>
-                <h3>Почта</h3>
                 <a href="mailto:hello@resonance.example">hello@resonance.example</a>
               </div>
             </div>
@@ -1203,7 +1237,7 @@
     <a class="back-to-top" href="#top" aria-label="Вернуться наверх" hidden>
       <img
         class="icon"
-        src="images/icons/up.svg"
+        src="images/icons/guitar-up.svg"
         width="24"
         height="24"
         alt=""
