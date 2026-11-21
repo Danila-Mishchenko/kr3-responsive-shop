@@ -1256,14 +1256,31 @@ h2 {
   border-radius: 14px;
   background: #e3f0ec;
 }
-.shop-feature img,
-.lesson-hero img {
+.shop-feature > img,
+.lesson-hero > img {
   display: block;
   width: 100%;
   height: auto;
   aspect-ratio: 1.45;
   object-fit: cover;
   border-radius: 8px;
+}
+.shop-feature__title {
+  display: flex;
+  align-items: center;
+  gap: clamp(8px, 2vw, 16px);
+}
+.shop-feature__miniature {
+  flex: none;
+  width: clamp(48px, 6vw, 78px);
+  height: auto;
+}
+.start-grid__miniature {
+  display: inline-block;
+  width: 36px;
+  height: 36px;
+  margin-right: 6px;
+  vertical-align: middle;
 }
 .shop-feature p {
   max-width: 52ch;
@@ -1815,9 +1832,9 @@ h3 > .decor-icon {
   background: var(--blue-surface);
   border: 1px solid #c7dff0;
 }
-.lesson-symbol .decor-icon {
-  width: 30px;
-  height: 30px;
+.lesson-symbol__miniature {
+  width: 44px;
+  height: 44px;
 }
 .site-footer,
 .visit-banner {
@@ -1874,11 +1891,11 @@ h3 > .decor-icon {
 }
 .category-icon {
   display: block;
-  width: 32px;
-  height: 32px;
-  padding: 5px;
-  border-radius: 5px;
-  background: var(--category-gold);
+  width: 39px;
+  height: 39px;
+  border: 1px solid #ffffff38;
+  border-radius: 6px;
+  background: #e9e5d6;
 }
 .category-tile__label {
   font-size: clamp(0.875rem, 1.5vw, 1.125rem);
@@ -1915,9 +1932,8 @@ h3 > .decor-icon {
     padding: 7px;
   }
   .category-icon {
-    width: 23px;
-    height: 23px;
-    padding: 3px;
+    width: 28px;
+    height: 28px;
   }
   .category-tile__arrow {
     display: none;
