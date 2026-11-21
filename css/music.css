@@ -4,8 +4,8 @@
   --color-surface: #ece8df;
   --color-text: #252521;
   --color-muted: #62615a;
-  --color-primary: #9b4327;
-  --color-primary-dark: #73301c;
+  --color-primary: #21523d;
+  --color-primary-dark: #163c2c;
   --color-border: #d9d4c9;
   --radius-sm: 8px;
   --radius-md: 14px;
@@ -490,9 +490,9 @@ h2 {
   min-height: 40px;
 }
 .favorite-toggle[aria-pressed='true'] {
-  background: #9b4327;
+  background: #21523d;
   color: #fff;
-  border-color: #9b4327;
+  border-color: #21523d;
 }
 .favorite-toggle {
   transition:
@@ -501,7 +501,7 @@ h2 {
     box-shadow 220ms;
 }
 .favorite-toggle[aria-pressed='true'] {
-  box-shadow: 0 0 0 3px #9b432718;
+  box-shadow: 0 0 0 3px #21523d18;
 }
 .saved-grid,
 .compare-results {
@@ -545,7 +545,7 @@ h2 {
 }
 .product__info {
   padding: 24px;
-  border-left: 2px solid #c9875e;
+  border-left: 2px solid #b69a5a;
 }
 .product__title {
   font-size: clamp(2rem, 3vw, 3rem);
@@ -987,7 +987,7 @@ h2 {
   .instrument-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 15px 28px #37260c18;
-    border-color: #c8895f;
+    border-color: #b69a5a;
   }
   .instrument-card:hover .instrument-picture img,
   .category-tile:hover img {
@@ -1379,27 +1379,6 @@ h2 {
   }
 }
 
-.contact-route {
-  padding: clamp(24px, 4vw, 44px);
-  background: #e9e2d5;
-  border-radius: 14px;
-}
-.contact-route dl {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
-  gap: 24px;
-  margin: 0;
-}
-.contact-route dt {
-  font-weight: 700;
-}
-.contact-route dd {
-  margin: 8px 0 0;
-  max-width: 46ch;
-  line-height: 1.7;
-  color: var(--color-muted);
-}
-
 .lesson-programs article {
   display: flex;
   flex-direction: column;
@@ -1415,4 +1394,229 @@ h2 {
 .lesson-programs article .button {
   margin-top: auto;
   align-self: flex-start;
+}
+
+/* Основное оформление магазина */
+:root {
+  --color-bg: #f7f6f1;
+  --color-surface: #edf0e9;
+  --color-text: #202a24;
+  --color-muted: #515c53;
+  --color-border: #d8dfd3;
+  --gold: #d7bb79;
+  --forest: #16392c;
+}
+.site-header {
+  color: var(--color-text);
+  background: #fffefa;
+  border-top: 0;
+  border-bottom: 1px solid var(--color-border);
+}
+.site-header__logo,
+.site-header .site-nav__link,
+.site-nav__account {
+  color: var(--forest);
+}
+.site-header__logo small {
+  color: var(--color-muted);
+}
+.site-header .site-nav__link {
+  border-radius: 2px;
+}
+.site-header .site-nav__link:hover,
+.site-header .site-nav__link--active {
+  background: #eaf0e9;
+  box-shadow: inset 0 -2px #aa8c45;
+  color: var(--forest);
+}
+.site-nav__account {
+  border-color: var(--color-border);
+}
+.site-nav__account:hover {
+  background: #eaf0e9;
+  color: var(--forest);
+}
+.page {
+  padding-top: 28px;
+}
+.hero {
+  isolation: isolate;
+  grid-template-columns: minmax(0, 1fr);
+  min-height: clamp(450px, 45vw, 610px);
+  border-radius: 4px;
+  border: 0;
+  background: var(--forest);
+  box-shadow: none;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(90deg, #102d21fa, #112e24cc 37%, #15291d18 100%);
+}
+.hero__picture {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+}
+.hero__picture img {
+  min-height: 0;
+  max-height: none;
+  object-position: 64% center;
+}
+.hero__content {
+  padding: clamp(26px, 5.5vw, 76px);
+  max-width: 740px;
+}
+.hero__title {
+  font-size: clamp(2.45rem, 6vw, 5.4rem);
+  line-height: 1.05;
+  text-wrap: initial;
+}
+.hero__category,
+.visit-banner .eyebrow {
+  color: var(--gold);
+}
+.hero__text {
+  color: #f0f4eb;
+}
+.hero .button,
+.visit-banner .button {
+  background: var(--gold);
+  color: #15271c;
+}
+.hero .button:hover,
+.visit-banner .button:hover {
+  background: #e8cd8f;
+}
+.section__title {
+  color: var(--forest);
+}
+.category-tile {
+  border-radius: 4px;
+  border: 1px solid var(--color-border);
+  background: #fffefa;
+  color: var(--forest);
+}
+.category-tile span {
+  position: static;
+  display: block;
+  padding: 14px 34px 14px 12px;
+  font-size: clamp(0.9rem, 1.5vw, 1.18rem);
+  background: none;
+  color: var(--forest);
+}
+.category-tile::after {
+  bottom: 10px;
+  right: 5px;
+  background: transparent;
+  color: #76622f;
+}
+.instrument-card,
+.shop-panel__grid article {
+  border-color: var(--color-border);
+  border-radius: 5px;
+  background: #fffefa;
+}
+.instrument-card__category {
+  color: var(--color-muted);
+}
+.instrument-card .product-card__price {
+  color: var(--forest);
+}
+.product-table thead,
+.visit-banner,
+.site-footer {
+  background: var(--forest);
+}
+.site-footer {
+  border-top: 3px solid #b69a5a;
+  color: #e0e8de;
+}
+.site-footer a {
+  color: #f0f4ed;
+}
+.site-footer a:hover {
+  color: var(--gold);
+}
+.site-footer .contact-row h3 {
+  color: #c0cec3;
+}
+.footer-intro,
+.site-footer__bottom {
+  border-color: #557061;
+}
+.footer-intro p {
+  color: #dcded3;
+}
+.catalog-filters,
+.compare-controls,
+.shop-feature,
+.lesson-hero,
+.request-account {
+  background: var(--color-surface);
+}
+.contacts-layout {
+  gap: clamp(16px, 3vw, 32px);
+}
+.contacts-details,
+.map-block {
+  padding: clamp(18px, 3vw, 32px);
+  border: 1px solid var(--color-border);
+  border-radius: 5px;
+  background: #fffefa;
+}
+.contacts-details .contact-row {
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: 14px;
+}
+.contacts-details .contact-row:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+.page-contacts .page-intro {
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: 24px;
+}
+.page-contacts .page-intro h1 {
+  margin-bottom: 10px;
+}
+.contact-notes {
+  align-items: center;
+  padding: clamp(20px, 4vw, 40px);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid #b69a5a;
+  background: var(--color-surface);
+}
+.contact-notes h2,
+.contact-notes p {
+  margin: 0;
+}
+.contact-notes__body .button {
+  margin-top: 12px;
+}
+.chat-launcher,
+.back-to-top {
+  background: var(--forest);
+  border-color: #b69a5a;
+}
+.service-dialog,
+.order-dialog {
+  border-top-color: #b69a5a;
+}
+@media (min-width: 768px) {
+  .contacts-layout {
+    grid-template-columns: minmax(0, 4fr) minmax(0, 6fr);
+  }
+}
+@media (max-width: 767px) {
+  .hero::before {
+    background: linear-gradient(90deg, #102d21fa, #112e24bb 65%, #15291d55);
+  }
+  .hero__picture img {
+    object-position: 58% center;
+  }
 }
