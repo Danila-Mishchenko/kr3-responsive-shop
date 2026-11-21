@@ -8,7 +8,7 @@
     <link rel="icon" href="images/harp-logo.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/responsive.css" />
-    <link rel="stylesheet" href="css/music.css?v=12" />
+    <link rel="stylesheet" href="css/music.css?v=13" />
     <script defer src="js/services.js?v=4"></script>
     <script defer src="js/appearance.js?v=3"></script>
   </head>
@@ -64,10 +64,14 @@
     <main class="page">
       <section class="hero">
         <div class="hero__content">
-          <p class="hero__category">Музыкальный магазин</p>
-          <h1 class="hero__title">Музыкальные инструменты</h1>
+          <p class="hero__category">Музыкальный магазин и студия</p>
+          <h1 class="hero__title">
+            Сыграй
+            <br />
+            <em>громче.</em>
+          </h1>
           <p class="hero__text">
-            Гитары, клавишные, ударные и духовые для первых занятий, студии и сцены.
+            Гитары, клавишные, ударные и духовые — от первого урока до выступления.
           </p>
           <a class="button button--primary" href="catalog.html">
             Открыть каталог
@@ -79,6 +83,10 @@
               alt=""
               aria-hidden="true"
             />
+          </a>
+          <a class="hero__lessons" href="lessons.html">
+            Занятия в студии
+            <span aria-hidden="true">↗</span>
           </a>
         </div>
         <picture class="hero__picture">
@@ -92,8 +100,8 @@
           />
         </picture>
       </section>
-      <section class="section" aria-labelledby="categories-title">
-        <h2 class="section__title" id="categories-title">Категории инструментов</h2>
+      <section class="section departments" aria-labelledby="categories-title">
+        <h2 class="section__title" id="categories-title">Выберите инструмент</h2>
         <ul class="category-grid">
           <li>
             <a class="category-tile" href="catalog.html?category=strings">
@@ -124,16 +132,15 @@
       <section class="section sound-story">
         <div class="sound-story__photo">
           <img
-            src="images/music-studio-1280.webp"
-            width="1280"
-            height="853"
-            alt="Инструменты в тёплом свете музыкальной студии"
+            src="images/electric-512.webp"
+            width="512"
+            height="512"
+            alt="Электрогитара Studio ST"
             loading="lazy"
           />
         </div>
         <div>
-          <p class="eyebrow">О магазине</p>
-          <h2>Инструменты для репетиций и сцены</h2>
+          <h2>От репетиции до сцены</h2>
           <p>
             Тёплый акустический звук, плотный электрический рифф или первая мелодия на клавишах.
             Начните с того, что хочется играть.

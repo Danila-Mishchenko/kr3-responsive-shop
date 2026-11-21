@@ -1620,3 +1620,207 @@ h2 {
     object-position: 58% center;
   }
 }
+
+/* Выразительная витрина */
+:root {
+  --forest: #10372a;
+  --gold: #f0cb72;
+  --color-primary: #16513c;
+  --color-bg: #f4f3ec;
+}
+.site-header {
+  background: #102820;
+  border-bottom: 1px solid #496052;
+}
+.site-header__logo,
+.site-header .site-nav__link,
+.site-nav__account {
+  color: #faf5e6;
+}
+.site-header__logo small {
+  color: #b9cbbe;
+}
+.site-header .site-nav__link--active,
+.site-header .site-nav__link:hover,
+.site-nav__account:hover {
+  background: #284c3b;
+  color: var(--gold);
+  box-shadow: inset 0 -2px var(--gold);
+}
+.site-nav__account {
+  border-color: #6c7e69;
+}
+.page-index > .page {
+  max-width: 1440px;
+}
+.hero {
+  display: grid;
+  align-items: stretch;
+  min-height: clamp(500px, 48vw, 665px);
+  background: #103629;
+  border-radius: 0;
+  border-left: 4px solid var(--gold);
+}
+.hero::before {
+  z-index: -1;
+  background:
+    repeating-linear-gradient(130deg, transparent 0 11px, #bcdbb106 11px 12px),
+    linear-gradient(90deg, #0e3025, #184635);
+}
+.hero__picture {
+  inset: 0 0 0 35%;
+  z-index: -1;
+  clip-path: polygon(22% 0, 100% 0, 100% 100%, 0 100%);
+}
+.hero__picture::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, #102b2488, transparent 58%);
+}
+.hero__picture img {
+  object-position: 58% center;
+}
+.hero__content {
+  padding: clamp(36px, 6vw, 84px);
+  max-width: 52%;
+}
+.hero__category {
+  letter-spacing: 0.11em;
+}
+.hero__title {
+  margin-bottom: 20px;
+  font-family: 'Arial Black', Arial, sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: clamp(3rem, 8vw, 7rem);
+  letter-spacing: -0.06em;
+  line-height: 0.91;
+}
+.hero__title em {
+  color: var(--gold);
+  font-style: normal;
+}
+.hero__text {
+  max-width: 30ch;
+  margin-bottom: 18px;
+}
+.hero .button {
+  border-radius: 2px;
+  padding-inline: 22px;
+}
+.hero__lessons {
+  display: table;
+  margin-top: 17px;
+  color: #fbf4df;
+  font-weight: 600;
+}
+.hero__lessons span {
+  color: var(--gold);
+}
+.departments {
+  padding-block: 26px 36px;
+  border-block: 1px solid #d4d8cc;
+}
+.section__title,
+.sound-story h2,
+.start-grid h2 {
+  font-family: Arial, sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.038em;
+}
+.category-tile {
+  --tile-shade: #e4e9dc;
+  border: 0;
+  border-radius: 0;
+  background: var(--tile-shade);
+  isolation: isolate;
+}
+.category-grid li:nth-child(2n) .category-tile {
+  --tile-shade: #ece3ce;
+}
+.category-tile img {
+  aspect-ratio: 1.2;
+  mix-blend-mode: multiply;
+}
+.category-tile span {
+  padding-block: 14px;
+  padding-left: 14px;
+  background: #164132;
+  color: #fff8e4;
+  font-weight: 700;
+}
+.category-tile::after {
+  color: var(--gold);
+  border-left: 1px solid #ffffff32;
+  border-radius: 0;
+  right: 6px;
+}
+.sound-story {
+  background: #e6ebe1;
+  border-left: 4px solid #be9a4e;
+  padding: clamp(18px, 4vw, 42px);
+}
+.sound-story__photo img {
+  object-fit: contain;
+}
+.start-grid > a {
+  background: #e1e8dc;
+  border-bottom: 2px solid #b79751;
+}
+.start-grid > a:hover {
+  background: #d7e2d2;
+}
+.catalog-intro,
+.page-contacts .page-intro {
+  background: #e0e9df;
+  border-left: 4px solid #b3934e;
+  padding: clamp(18px, 4vw, 38px);
+}
+.instrument-card {
+  border-radius: 2px;
+  border-bottom: 2px solid #a69156;
+}
+.lesson-programs article {
+  border-radius: 2px;
+  border-top: 3px solid #ad8a46;
+}
+.button:focus-visible,
+.text-link:focus-visible,
+.hero__lessons:focus-visible {
+  outline-offset: 4px;
+}
+.hero :focus-visible,
+.site-header :focus-visible {
+  outline-color: var(--gold);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .hero__picture img {
+    animation: stage-in 850ms ease-out both;
+  }
+  @keyframes stage-in {
+    from {
+      transform: scale(1.045);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+}
+@media (max-width: 767px) {
+  .hero {
+    align-items: end;
+    min-height: 560px;
+  }
+  .hero__picture {
+    inset: 0;
+    clip-path: none;
+  }
+  .hero__picture::after {
+    background: linear-gradient(0deg, #102b24 0%, #102b24eb 26%, #102b241c 87%);
+  }
+  .hero__content {
+    max-width: 100%;
+    padding: 28px 22px;
+  }
+}
