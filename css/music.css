@@ -317,19 +317,55 @@ h2 {
 .faq {
   max-width: 900px;
   margin-inline: auto;
+  padding: clamp(16px, 4vw, 36px);
+  scroll-margin-top: 5rem;
+  border: 2px solid var(--color-border);
+  border-top: 5px solid var(--accent-blue);
+  border-radius: 14px;
+  background: var(--blue-surface);
 }
 .faq__item {
-  padding: 20px;
-  border: 0;
-  border-bottom: 1px solid var(--color-border);
-  border-radius: 0;
-  background: transparent;
+  --question-accent: var(--accent-green);
+  padding: 0;
+  border: 1px solid var(--color-border);
+  border-left: 4px solid var(--question-accent);
+  border-radius: 8px;
+  background: #fcfffe;
+}
+.faq__item:nth-of-type(even) {
+  --question-accent: var(--accent-blue);
+}
+.faq__item:last-child {
+  margin-bottom: 0;
 }
 .faq__question {
+  padding: 16px;
+  color: var(--forest);
   font-size: 1.05rem;
 }
+.faq__question::marker {
+  color: var(--blue);
+}
 .faq__item[open] {
-  background: #ece5d9;
+  background: var(--color-surface);
+  border-color: var(--question-accent);
+}
+.faq__answer {
+  margin: 0;
+  padding: 0 16px 16px;
+  line-height: 1.65;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .faq__item {
+    transition: background-color 220ms ease, border-color 220ms ease;
+  }
+  .faq__item[open] > .faq__answer {
+    animation: faq-answer-in 220ms ease-out both;
+  }
+  @keyframes faq-answer-in {
+    from { opacity: 0; transform: translateY(-4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
 }
 
 /* Каталог */
@@ -1738,25 +1774,28 @@ h2 {
   }
 }
 
-/* Зелёная витрина с золотыми деталями и синими акцентами */
+/* Палитра витрины */
 :root {
-  --forest: #0a422e;
+  --forest: #073e2e;
+  --accent-green: #1eb53a;
+  --accent-blue: #0099b5;
+  --color-bg: #f2faf7;
   --gold: #ffd15b;
-  --color-primary: #126444;
-  --color-primary-dark: #08472f;
-  --color-surface: #e7f3ec;
-  --color-border: #c8e1d3;
-  --blue: #18547a;
-  --blue-surface: #e6f2fc;
+  --color-primary: #08723e;
+  --color-primary-dark: #065131;
+  --color-surface: #e5f7e9;
+  --color-border: #9bc9bb;
+  --blue: #00637b;
+  --blue-surface: #e3f6fb;
 }
 .site-header {
-  background: #083b29;
-  border-bottom: 2px solid #d9ab3f;
+  background: linear-gradient(110deg, #063a28, #083748 80%);
+  border-bottom: 3px solid var(--accent-blue);
 }
 .site-header .site-nav__link--active,
 .site-header .site-nav__link:hover,
 .site-nav__account:hover {
-  background: #17553d;
+  background: #14584c;
 }
 .site-nav__link > .nav-icon {
   width: 19px;
@@ -1777,13 +1816,13 @@ h3 > .decor-icon {
   margin-right: 9px;
 }
 .hero {
-  background: #075435;
+  background: #095839;
   border-color: var(--gold);
 }
 .hero::before {
   background:
     repeating-linear-gradient(130deg, transparent 0 11px, #c6ffda0b 11px 12px),
-    linear-gradient(110deg, #06432e, #08794d);
+    linear-gradient(110deg, #063f2c, #075367);
 }
 .hero__lessons > .decor-icon {
   margin-right: 8px;
@@ -1792,17 +1831,17 @@ h3 > .decor-icon {
   border-color: var(--color-border);
 }
 .sound-story {
-  background: #d9f1e3;
-  border-color: #d3ab47;
+  background: #e5f7e9;
+  border-color: var(--accent-green);
 }
 .page-index .shop-feature,
 .lesson-hero {
   background: var(--blue-surface);
-  border-color: #b9d8ed;
+  border-color: #75c4d5;
 }
 .compare-controls {
   background: var(--blue-surface);
-  border-color: #b9d8ed;
+  border-color: #75c4d5;
 }
 .compare-table thead {
   background: var(--blue);
@@ -1838,7 +1877,7 @@ h3 > .decor-icon {
 }
 .site-footer,
 .visit-banner {
-  background: #073b29;
+  background: linear-gradient(110deg, #063d2a, #083b4b);
 }
 @media (max-width: 767px) {
   .site-nav__link > .nav-icon {
@@ -1853,13 +1892,13 @@ h3 > .decor-icon {
   min-width: 0;
 }
 .category-tile {
-  --category-panel: #102820;
+  --category-panel: #0a3426;
   --category-gold: #ffda77;
   display: grid;
   grid-template-rows: auto 1fr;
   height: 100%;
   overflow: hidden;
-  border: 1px solid var(--category-panel);
+  border: 2px solid var(--category-panel);
   border-radius: 10px;
   background: var(--category-panel);
   color: #f6fff9;
@@ -1867,11 +1906,14 @@ h3 > .decor-icon {
   transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
 }
 .category-grid > li:nth-child(2) .category-tile {
-  --category-panel: #132d42;
+  --category-panel: #08394c;
 }
 .category-tile:focus-visible {
   outline: 3px solid var(--blue);
   outline-offset: 4px;
+}
+.category-grid > li:nth-child(2) .category-tile__caption {
+  border-top-color: var(--accent-blue);
 }
 .category-tile__photo {
   display: block;
@@ -1887,7 +1929,7 @@ h3 > .decor-icon {
   gap: 10px;
   min-height: 62px;
   padding: 12px;
-  border-top: 1px solid #ffffff2b;
+  border-top: 2px solid var(--accent-green);
 }
 .category-icon {
   display: block;
@@ -1941,9 +1983,9 @@ h3 > .decor-icon {
 }
 @media (hover: hover) {
   .category-tile:hover {
-    border-color: #bb8d24;
-    box-shadow: 0 10px 22px #122b2230;
-    transform: translateY(-3px);
+    border-color: var(--accent-blue);
+    box-shadow: 0 12px 24px #0b4e4936;
+    transform: translateY(-5px);
   }
   .category-tile:hover .category-tile__arrow {
     background: var(--category-gold);
@@ -1957,5 +1999,63 @@ h3 > .decor-icon {
   }
   .category-tile:hover {
     transform: none;
+  }
+}
+
+/* Фотографии и рамки */
+.page-about .about-hero {
+  padding: clamp(16px, 4vw, 36px);
+  border: 2px solid var(--accent-blue);
+  border-radius: 16px;
+  background: linear-gradient(120deg, var(--color-surface), var(--blue-surface));
+}
+.page-about .about-hero img,
+.shop-feature > img,
+.lesson-hero > img,
+.editorial__photo {
+  box-shadow: 0 12px 24px #063a2824;
+}
+.editorial__photo {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: 24px;
+  border: 2px solid var(--accent-blue);
+  border-radius: 12px;
+}
+.shop-feature,
+.lesson-hero,
+.compare-controls,
+.contacts-details,
+.map-block {
+  border-width: 2px;
+}
+.shop-feature,
+.lesson-hero {
+  border-top: 4px solid var(--accent-blue);
+}
+.instrument-card,
+.lesson-programs article {
+  border: 2px solid var(--color-border);
+  border-bottom: 4px solid var(--accent-green);
+}
+.instrument-card:focus-within,
+.lesson-programs article:focus-within {
+  border-color: var(--blue);
+}
+@media (hover: hover) {
+  .instrument-card:hover {
+    border-color: var(--accent-blue);
+    box-shadow: 0 12px 24px #00637b26;
+  }
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .lesson-programs article {
+    transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+  }
+  .lesson-programs article:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent-blue);
+    box-shadow: 0 12px 24px #00637b26;
   }
 }
