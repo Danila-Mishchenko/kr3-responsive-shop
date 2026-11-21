@@ -28,7 +28,8 @@ if (favoriteButtons.length || favoritesGrid) {
   function updateFavoriteButton(button) {
     const selected = favoriteIds.has(button.dataset.favorite);
     button.setAttribute('aria-pressed', String(selected));
-    button.textContent = selected ? 'В избранном' : 'В избранное';
+    const label = button.querySelector('[data-favorite-label]') || button;
+    label.textContent = selected ? 'В избранном' : 'В избранное';
   }
 
   for (const button of favoriteButtons) {
@@ -74,7 +75,8 @@ if (favoriteButtons.length || favoritesGrid) {
         card.remove();
         updateCount();
         if (!saved) count.textContent += ' Браузер не разрешил сохранить изменения.';
-        const nextControl = nextCard?.querySelector('[data-remove-favorite]') ||
+        const nextControl =
+          nextCard?.querySelector('[data-remove-favorite]') ||
           document.querySelector('main a[href="catalog.html"]');
         nextControl.focus();
       });
@@ -110,9 +112,10 @@ if (firstSelect && secondSelect) {
     const second = byId.get(secondSelect.value);
     output.hidden = !first || !second || first === second;
     if (output.hidden) {
-      status.textContent = first && first === second
-        ? 'Для сравнения выберите две разные модели.'
-        : 'Выберите обе модели, чтобы увидеть таблицу.';
+      status.textContent =
+        first && first === second
+          ? 'Для сравнения выберите две разные модели.'
+          : 'Выберите обе модели, чтобы увидеть таблицу.';
       return;
     }
 

@@ -1,7 +1,7 @@
 /* Палитра и типографика */
 :root {
-  --color-bg: #f6f3ed;
-  --color-surface: #ece8df;
+  --color-bg: #f0f7f3;
+  --color-surface: #e5f2ea;
   --color-text: #252521;
   --color-muted: #62615a;
   --color-primary: #21523d;
@@ -118,7 +118,7 @@ h2 {
 /* Шапка */
 .site-header {
   background: #242722;
-  color: #f6f3ed;
+  color: #f0f7f3;
   border-top: 3px solid #c67d54;
   border-bottom: 1px solid #44483f;
 }
@@ -134,7 +134,7 @@ h2 {
   display: flex;
   align-items: center;
   gap: 12px;
-  color: #f6f3ed;
+  color: #f0f7f3;
   text-decoration: none;
   font-weight: 800;
   letter-spacing: 0.13em;
@@ -324,7 +324,7 @@ h2 {
 .start-grid > a {
   text-decoration: none;
   padding: 28px;
-  background: #e9e2d5;
+  background: #dbede2;
   border-radius: 4px;
   color: #392d24;
   transition: background 200ms;
@@ -425,7 +425,7 @@ h2 {
   padding: 0;
   gap: 0;
   border: 1px solid #ddd7cc;
-  background: #fffcf7;
+  background: #fbfffc;
   border-radius: 6px;
   overflow: hidden;
   min-width: 0;
@@ -511,7 +511,7 @@ h2 {
   display: grid;
   gap: 16px;
   padding: 24px;
-  background: #eee8dc;
+  background: #e3f0ec;
   border: 1px solid var(--color-border);
   border-radius: 6px;
 }
@@ -526,7 +526,7 @@ h2 {
   table-layout: fixed;
 }
 .product-table {
-  background: #fffcf7;
+  background: #fbfffc;
 }
 .product-table td,
 .product-table th {
@@ -587,7 +587,7 @@ h2 {
 .principles article {
   padding: 24px;
   border-top: 2px solid #a7653c;
-  background: #eee8dc;
+  background: #e3f0ec;
 }
 .principles article > span {
   color: var(--color-primary);
@@ -801,7 +801,7 @@ h2 {
 .order-form__input,
 .order-form__select,
 .order-form__textarea {
-  background: #fffcf7;
+  background: #fbfffc;
   border-radius: 5px;
   border-color: #bcb3a1;
 }
@@ -889,7 +889,7 @@ h2 {
   max-height: 280px;
   overflow-y: auto;
   padding: 12px;
-  background: #e6e3d9;
+  background: #deefe6;
   border: 1px solid var(--color-border);
   border-radius: 5px;
   margin-block: 18px;
@@ -900,7 +900,7 @@ h2 {
   max-width: 88%;
   padding: 12px;
   margin: 0;
-  background: #fffaf0;
+  background: #f3fcf6;
   border-radius: 10px 10px 10px 0;
   overflow-wrap: anywhere;
   white-space: pre-wrap;
@@ -1306,7 +1306,7 @@ h2 {
   padding: clamp(20px, 4vw, 44px);
   border: 1px solid var(--color-border);
   border-radius: 14px;
-  background: #eee8dc;
+  background: #e3f0ec;
 }
 .shop-feature img,
 .lesson-hero img {
@@ -1338,7 +1338,7 @@ h2 {
   padding: 20px;
   border: 1px solid var(--color-border);
   border-radius: 10px;
-  background: #fffcf7;
+  background: #fbfffc;
 }
 .shop-panel__grid h3 {
   margin-top: 0;
@@ -1398,7 +1398,7 @@ h2 {
 
 /* Основное оформление магазина */
 :root {
-  --color-bg: #f7f6f1;
+  --color-bg: #f0f7f3;
   --color-surface: #edf0e9;
   --color-text: #202a24;
   --color-muted: #515c53;
@@ -1408,7 +1408,7 @@ h2 {
 }
 .site-header {
   color: var(--color-text);
-  background: #fffefa;
+  background: #fbfffc;
   border-top: 0;
   border-bottom: 1px solid var(--color-border);
 }
@@ -1496,7 +1496,7 @@ h2 {
 .category-tile {
   border-radius: 4px;
   border: 1px solid var(--color-border);
-  background: #fffefa;
+  background: #fbfffc;
   color: var(--forest);
 }
 .category-tile span {
@@ -1517,7 +1517,7 @@ h2 {
 .shop-panel__grid article {
   border-color: var(--color-border);
   border-radius: 5px;
-  background: #fffefa;
+  background: #fbfffc;
 }
 .instrument-card__category {
   color: var(--color-muted);
@@ -1565,7 +1565,7 @@ h2 {
   padding: clamp(18px, 3vw, 32px);
   border: 1px solid var(--color-border);
   border-radius: 5px;
-  background: #fffefa;
+  background: #fbfffc;
 }
 .contacts-details .contact-row {
   padding-bottom: 14px;
@@ -1624,9 +1624,9 @@ h2 {
 /* Выразительная витрина */
 :root {
   --forest: #10372a;
-  --gold: #f0cb72;
+  --gold: #ffd15b;
   --color-primary: #16513c;
-  --color-bg: #f4f3ec;
+  --color-bg: #f0f7f3;
 }
 .site-header {
   background: #102820;
@@ -1730,14 +1730,14 @@ h2 {
   letter-spacing: -0.038em;
 }
 .category-tile {
-  --tile-shade: #e4e9dc;
+  --tile-shade: #d0eedf;
   border: 0;
   border-radius: 0;
   background: var(--tile-shade);
   isolation: isolate;
 }
 .category-grid li:nth-child(2n) .category-tile {
-  --tile-shade: #ece3ce;
+  --tile-shade: #dfedf7;
 }
 .category-tile img {
   aspect-ratio: 1.2;
@@ -1747,7 +1747,7 @@ h2 {
   padding-block: 14px;
   padding-left: 14px;
   background: #164132;
-  color: #fff8e4;
+  color: #f5fff8;
   font-weight: 700;
 }
 .category-tile::after {
@@ -1757,7 +1757,7 @@ h2 {
   right: 6px;
 }
 .sound-story {
-  background: #e6ebe1;
+  background: #d6eee2;
   border-left: 4px solid #be9a4e;
   padding: clamp(18px, 4vw, 42px);
 }
@@ -1765,7 +1765,7 @@ h2 {
   object-fit: contain;
 }
 .start-grid > a {
-  background: #e1e8dc;
+  background: #dcefe4;
   border-bottom: 2px solid #b79751;
 }
 .start-grid > a:hover {
@@ -1773,7 +1773,7 @@ h2 {
 }
 .catalog-intro,
 .page-contacts .page-intro {
-  background: #e0e9df;
+  background: #dbefe4;
   border-left: 4px solid #b3934e;
   padding: clamp(18px, 4vw, 38px);
 }
@@ -1822,5 +1822,149 @@ h2 {
   .hero__content {
     max-width: 100%;
     padding: 28px 22px;
+  }
+}
+
+/* Зелёная витрина с золотыми деталями и синими акцентами */
+:root {
+  --forest: #0a422e;
+  --gold: #ffd15b;
+  --color-primary: #126444;
+  --color-primary-dark: #08472f;
+  --color-surface: #e7f3ec;
+  --color-border: #c8e1d3;
+  --blue: #18547a;
+  --blue-surface: #e6f2fc;
+}
+.site-header {
+  background: #083b29;
+  border-bottom: 2px solid #d9ab3f;
+}
+.site-header .site-nav__link--active,
+.site-header .site-nav__link:hover,
+.site-nav__account:hover {
+  background: #17553d;
+}
+.site-nav__link > .nav-icon {
+  width: 19px;
+  height: 19px;
+  margin-right: 7px;
+  filter: brightness(0) saturate(100%) invert(84%) sepia(70%) saturate(689%) hue-rotate(337deg);
+}
+.decor-icon {
+  width: 22px;
+  height: 22px;
+  display: inline-block;
+  flex: none;
+  vertical-align: middle;
+}
+h1 > .decor-icon,
+h2 > .decor-icon,
+h3 > .decor-icon {
+  margin-right: 9px;
+}
+.hero {
+  background: #075435;
+  border-color: var(--gold);
+}
+.hero::before {
+  background:
+    repeating-linear-gradient(130deg, transparent 0 11px, #c6ffda0b 11px 12px),
+    linear-gradient(110deg, #06432e, #08794d);
+}
+.hero__lessons > .decor-icon {
+  margin-right: 8px;
+}
+.departments {
+  border-color: var(--color-border);
+}
+.category-tile {
+  --tile-shade: #ccedda;
+}
+.category-grid li:nth-child(2n) .category-tile {
+  --tile-shade: #d9edf9;
+}
+.category-tile span {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  background: #0a5639;
+}
+.category-icon {
+  display: block;
+  width: 25px;
+  height: 25px;
+  flex: none;
+  filter: brightness(0) saturate(100%) invert(84%) sepia(70%) saturate(689%) hue-rotate(337deg);
+}
+.category-grid li:nth-child(2) .category-tile span {
+  background: #18547a;
+}
+.sound-story {
+  background: #d9f1e3;
+  border-color: #d3ab47;
+}
+.page-index .shop-feature,
+.lesson-hero {
+  background: var(--blue-surface);
+  border-color: #b9d8ed;
+}
+.compare-controls {
+  background: var(--blue-surface);
+  border-color: #b9d8ed;
+}
+.compare-table thead {
+  background: var(--blue);
+}
+.instrument-card .instrument-picture {
+  background: #ecf6f0;
+}
+.instrument-card .instrument-picture img {
+  mix-blend-mode: multiply;
+}
+.instrument-card__actions .button {
+  gap: 5px;
+}
+.instrument-card__actions .decor-icon {
+  width: 16px;
+  height: 16px;
+}
+.favorite-toggle[aria-pressed='true'] .decor-icon {
+  filter: brightness(0) invert(1);
+}
+.lesson-symbol {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 10px;
+  background: var(--blue-surface);
+  border: 1px solid #c7dff0;
+}
+.lesson-symbol .decor-icon {
+  width: 30px;
+  height: 30px;
+}
+.site-footer,
+.visit-banner {
+  background: #073b29;
+}
+@media (max-width: 767px) {
+  .site-nav__link > .nav-icon {
+    width: 14px;
+    height: 14px;
+    margin-right: 3px;
+  }
+  .category-tile span {
+    padding-left: 7px;
+    padding-right: 23px;
+    gap: 4px;
+  }
+  .category-icon {
+    width: 18px;
+    height: 18px;
+  }
+  .category-tile::after {
+    width: 15px;
   }
 }
