@@ -262,16 +262,6 @@ h2 {
   gap: 30px;
   align-items: center;
 }
-.sound-story__photo {
-  overflow: hidden;
-  border-radius: 4px;
-}
-.sound-story__photo img {
-  width: 100%;
-  display: block;
-  aspect-ratio: 1.4;
-  object-fit: cover;
-}
 .sound-story h2,
 .editorial h2,
 .visit-banner h2 {
@@ -1125,9 +1115,6 @@ h2 {
   .hero__picture img {
     min-height: 520px;
   }
-  .sound-story__photo img {
-    aspect-ratio: 1.65;
-  }
   .site-footer__inner {
     padding-top: 32px;
     padding-bottom: 84px;
@@ -1239,7 +1226,6 @@ h2 {
   border-radius: 14px;
   background: #e3f0ec;
 }
-.shop-feature > img,
 .lesson-hero > img {
   display: block;
   width: 100%;
@@ -1267,7 +1253,8 @@ h2 {
   margin-top: 6px;
 }
 
-.page-index .shop-feature > .button {
+.shop-feature > .button,
+.sound-story > .text-link {
   justify-self: start;
 }
 .shop-panel {
@@ -1639,9 +1626,6 @@ h2 {
   border-left: 4px solid #be9a4e;
   padding: clamp(18px, 4vw, 42px);
 }
-.sound-story__photo img {
-  object-fit: contain;
-}
 .catalog-intro,
 .page-contacts .page-intro {
   background: #dbefe4;
@@ -1932,7 +1916,6 @@ h3 > .decor-icon {
   background: linear-gradient(120deg, var(--color-surface), var(--blue-surface));
 }
 .page-about .about-hero img,
-.shop-feature > img,
 .lesson-hero > img,
 .editorial__photo {
   box-shadow: 0 12px 24px #063a2824;
@@ -2298,10 +2281,6 @@ h1,
   color: #d6e9f6;
 }
 
-.sound-story__photo {
-  border-radius: 16px;
-  background: #dceaf2;
-}
 
 .sound-story .text-link:hover {
   color: var(--gold);
@@ -2471,7 +2450,8 @@ h1,
     aspect-ratio: 1.1;
   }
 
-  .page-index .shop-feature {
+  .shop-feature,
+  .sound-story {
     grid-template-columns: minmax(0, 1fr) auto;
   }
 }
@@ -2569,6 +2549,11 @@ h1,
 
 .service-card__body p + .button {
   margin-top: auto;
+}
+
+.service-card .icon {
+  width: 18px;
+  height: 18px;
 }
 
 @media (min-width: 860px) {
