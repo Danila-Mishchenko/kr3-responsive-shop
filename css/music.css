@@ -688,23 +688,6 @@ h2 {
   padding-block: 6px;
   text-decoration: none;
 }
-.contact-notes {
-  display: grid;
-  gap: 24px;
-}
-.contact-notes article {
-  border-top: 1px solid var(--color-border);
-  padding-top: 16px;
-}
-.contact-notes h3 {
-  font-size: 1.25rem;
-  font-weight: 500;
-}
-.contact-notes p {
-  color: var(--color-muted);
-  line-height: 1.8;
-}
-
 /* Подвал */
 .site-footer {
   background: #242722;
@@ -1009,7 +992,6 @@ h2 {
   .principles {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
-  .contact-notes,
   .compare-controls {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1185,9 +1167,6 @@ h2 {
   }
   .page-contacts .page-intro {
     padding-block: 12px;
-  }
-  .page-contacts .contact-notes {
-    margin-bottom: 36px;
   }
 }
 @media (min-width: 1200px) {
@@ -1520,20 +1499,6 @@ h2 {
 }
 .page-contacts .page-intro h1 {
   margin-bottom: 10px;
-}
-.contact-notes {
-  align-items: center;
-  padding: clamp(20px, 4vw, 40px);
-  border: 1px solid var(--color-border);
-  border-left: 3px solid #b69a5a;
-  background: var(--color-surface);
-}
-.contact-notes h2,
-.contact-notes p {
-  margin: 0;
-}
-.contact-notes__body .button {
-  margin-top: 12px;
 }
 .chat-launcher,
 .back-to-top {
@@ -2392,8 +2357,7 @@ h1,
 .instrument-card,
 .saved-grid .instrument-card,
 .lesson-programs article,
-.shop-panel__grid article,
-.contact-notes article {
+.shop-panel__grid article {
   border: 1px solid var(--color-border);
   border-bottom: 3px solid var(--accent-green);
   border-radius: 14px;
@@ -2546,5 +2510,78 @@ h1,
 
   .page-catalog .instrument-card .product-card__description {
     font-size: 0.8rem;
+  }
+}
+
+/* Мастера в разделе контактов */
+.contact-notes {
+  padding: clamp(18px, 4vw, 44px);
+  border: 1px solid var(--color-border);
+  border-top: 4px solid var(--accent-blue);
+  border-radius: 18px;
+  background: var(--blue-surface);
+}
+
+.contact-notes__grid {
+  display: grid;
+  gap: clamp(14px, 2vw, 24px);
+  margin-top: 28px;
+}
+
+.service-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-bottom: 3px solid var(--accent-green);
+  border-radius: 14px;
+  background: var(--color-surface);
+  box-shadow: var(--panel-shadow);
+}
+
+.service-card__photo {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+
+.service-card__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding: clamp(14px, 2vw, 24px);
+}
+
+.service-card__body h3,
+.service-card__body p {
+  margin: 0;
+}
+
+.service-card__body h3 {
+  font-size: 1.4rem;
+}
+
+.service-card__category {
+  color: var(--blue);
+  font-weight: 700;
+}
+
+.service-card__body p + .button {
+  margin-top: auto;
+}
+
+.service-card .icon {
+  width: 18px;
+  height: 18px;
+}
+
+@media (min-width: 860px) {
+  .contact-notes__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
