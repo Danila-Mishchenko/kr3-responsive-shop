@@ -8,7 +8,7 @@
     <link rel="icon" href="images/harp-logo.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/responsive.css" />
-    <link rel="stylesheet" href="css/music.css?v=18" />
+    <link rel="stylesheet" href="css/music.css?v=19" />
     <script defer src="js/services.js?v=4"></script>
     <script defer src="js/appearance.js?v=3"></script>
   </head>
@@ -113,29 +113,26 @@
       <section class="hero">
         <div class="hero__content">
           <p class="hero__category">Музыкальный магазин и студия</p>
-          <h1 class="hero__title">
-            Сыграй
-            <br />
-            <em>громче.</em>
-          </h1>
+          <h1 class="hero__title">Найди свой <em>звук.</em></h1>
           <p class="hero__text">
             Гитары, клавишные, ударные и духовые — от первого урока до выступления.
           </p>
-          <a class="button button--primary" href="catalog.html">
-            Открыть каталог
-            <img
-              class="icon"
-              src="images/icons/arrow.svg"
-              width="24"
-              height="24"
-              alt=""
-              aria-hidden="true"
-            />
-          </a>
-          <a class="hero__lessons" href="lessons.html">
-            Занятия в студии
-            <span aria-hidden="true">↗</span>
-          </a>
+          <div class="hero__actions">
+            <a class="button button--primary" href="catalog.html">
+              Открыть каталог
+              <img
+                class="icon"
+                src="images/icons/arrow.svg"
+                width="24"
+                height="24"
+                alt=""
+                aria-hidden="true"
+              />
+            </a>
+            <a class="button button--secondary hero__lessons" href="lessons.html">
+              Занятия в студии
+            </a>
+          </div>
         </div>
         <picture class="hero__picture">
           <source media="(min-width: 768px)" srcset="images/music-studio-1280.webp" />
