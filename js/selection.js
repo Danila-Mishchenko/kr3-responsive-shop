@@ -1,95 +1,50 @@
 'use strict';
 
 // Избранное
-const favoriteKey = 'resonance-favorites';
-const favoriteButtons = document.querySelectorAll('[data-favorite]');
 const favoritesGrid = document.getElementById('favorites-grid');
-if (favoriteButtons.length || favoritesGrid) {
-  const availableIds = new Set(instruments.map((instrument) => instrument.id));
-  let favoriteIds = new Set();
-  try {
-    const saved = JSON.parse(localStorage.getItem(favoriteKey));
-    if (Array.isArray(saved)) {
-      favoriteIds = new Set(saved.filter((id) => availableIds.has(id)));
-    }
-  } catch {
-    // Вкладка может ограничивать доступ к хранилищу.
-  }
+if (favoritesGrid) {
+  const favoriteIds = readFavoriteIds(instruments);
+  const template = document.getElementById('favorite-template');
+  const count = document.getElementById('favorites-count');
+  const empty = document.getElementById('favorites-empty');
 
-  function saveFavorites() {
-    try {
-      localStorage.setItem(favoriteKey, JSON.stringify([...favoriteIds]));
-      return true;
-    } catch {
-      return false;
-    }
-  }
+  for (const instrument of instruments) {
+    if (!favoriteIds.has(instrument.id)) continue;
+    const card = template.content.firstElementChild.cloneNode(true);
+    const image = card.querySelector('img');
+    image.src = 'images/' + instrument.id + '-320.webp';
+    image.alt = instrument.title;
+    card.querySelector('.product-card__title').textContent = instrument.title;
+    card.querySelector('.product-card__description').textContent = instrument.specs;
+    card.querySelector('.product-card__price').textContent = formatInstrumentPrice(instrument);
 
-  function updateFavoriteButton(button) {
-    const selected = favoriteIds.has(button.dataset.favorite);
-    button.setAttribute('aria-pressed', String(selected));
-    const label = button.querySelector('[data-favorite-label]') || button;
-    label.textContent = selected ? 'В избранном' : 'В избранное';
-  }
+    const link = card.querySelector('.saved-product-link');
+    link.href = 'product.html?item=' + instrument.id;
+    link.setAttribute('aria-label', 'Подробнее: ' + instrument.title);
 
-  for (const button of favoriteButtons) {
-    updateFavoriteButton(button);
-    button.addEventListener('click', () => {
-      const id = button.dataset.favorite;
-      if (favoriteIds.has(id)) favoriteIds.delete(id);
-      else favoriteIds.add(id);
-      const saved = saveFavorites();
-      updateFavoriteButton(button);
-      if (!saved) {
-        document.getElementById('favorite-status').textContent =
-          'Браузер не разрешил сохранить изменения между страницами.';
-      }
+    const removeButton = card.querySelector('[data-remove-favorite]');
+    removeButton.setAttribute('aria-label', 'Убрать из избранного: ' + instrument.title);
+    removeButton.addEventListener('click', () => {
+      const nextCard = card.nextElementSibling || card.previousElementSibling;
+      favoriteIds.delete(instrument.id);
+      const saved = saveFavoriteIds(favoriteIds);
+      card.remove();
+      updateCount();
+      if (!saved) count.textContent += ' Браузер не разрешил сохранить изменения.';
+      const nextControl =
+        nextCard?.querySelector('[data-remove-favorite]') ||
+        document.querySelector('main a[href="catalog.html"]');
+      nextControl.focus();
     });
+    favoritesGrid.append(card);
   }
 
-  if (favoritesGrid) {
-    const template = document.getElementById('favorite-template');
-    const count = document.getElementById('favorites-count');
-    const empty = document.getElementById('favorites-empty');
-
-    for (const instrument of instruments) {
-      if (!favoriteIds.has(instrument.id)) continue;
-      const card = template.content.firstElementChild.cloneNode(true);
-      const image = card.querySelector('img');
-      image.src = 'images/' + instrument.id + '-320.webp';
-      image.alt = instrument.title;
-      card.querySelector('.product-card__title').textContent = instrument.title;
-      card.querySelector('.product-card__description').textContent = instrument.specs;
-      card.querySelector('.product-card__price').textContent = formatInstrumentPrice(instrument);
-
-      const link = card.querySelector('.saved-product-link');
-      link.href = 'product.html?item=' + instrument.id;
-      link.setAttribute('aria-label', 'Подробнее: ' + instrument.title);
-
-      const removeButton = card.querySelector('[data-remove-favorite]');
-      removeButton.setAttribute('aria-label', 'Убрать из избранного: ' + instrument.title);
-      removeButton.addEventListener('click', () => {
-        const nextCard = card.nextElementSibling || card.previousElementSibling;
-        favoriteIds.delete(instrument.id);
-        const saved = saveFavorites();
-        card.remove();
-        updateCount();
-        if (!saved) count.textContent += ' Браузер не разрешил сохранить изменения.';
-        const nextControl =
-          nextCard?.querySelector('[data-remove-favorite]') ||
-          document.querySelector('main a[href="catalog.html"]');
-        nextControl.focus();
-      });
-      favoritesGrid.append(card);
-    }
-
-    function updateCount() {
-      empty.hidden = favoriteIds.size > 0;
-      count.textContent = favoriteIds.size ? 'Сохранено: ' + favoriteIds.size : 'Избранное пусто.';
-    }
-
-    updateCount();
+  function updateCount() {
+    empty.hidden = favoriteIds.size > 0;
+    count.textContent = favoriteIds.size ? 'Сохранено: ' + favoriteIds.size : 'Избранное пусто.';
   }
+
+  updateCount();
 }
 
 // Сравнение

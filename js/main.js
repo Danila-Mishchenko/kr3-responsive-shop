@@ -106,7 +106,7 @@ const orderDialog = document.getElementById('order-dialog');
 
 if (orderDialog) {
   const orderForm = orderDialog.querySelector('.order-form');
-  const orderButtons = document.querySelectorAll('button[data-product]');
+  const catalog = document.getElementById('catalog-app');
   const closeButton = document.getElementById('close-order-dialog');
   const closeIconButton = document.getElementById('close-order-dialog-icon');
   const productInput = document.getElementById('order-product');
@@ -122,17 +122,16 @@ if (orderDialog) {
     orderForm.querySelector('.success-message').hidden = true;
   }
 
-  orderButtons.forEach((button) => {
-    button.addEventListener('click', () => {
-      const product = button.dataset.product || '—';
-      resetDialogState();
-      productInput.value = product;
-      productLabel.textContent = product;
-      const delivery = document.getElementById('request-delivery');
-      if (delivery) delivery.dispatchEvent(new Event('change'));
-      syncRequestAccount();
-      orderDialog.showModal();
-    });
+  catalog?.addEventListener('click', (event) => {
+    const button = event.target.closest('button[data-product]');
+    if (!button) return;
+
+    resetDialogState();
+    productInput.value = button.dataset.product;
+    productLabel.textContent = button.dataset.product;
+    document.getElementById('request-delivery')?.dispatchEvent(new Event('change'));
+    syncRequestAccount();
+    orderDialog.showModal();
   });
 
   closeButton.addEventListener('click', () => orderDialog.close());
