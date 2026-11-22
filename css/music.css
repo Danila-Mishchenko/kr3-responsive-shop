@@ -1266,6 +1266,10 @@ h2 {
 .shop-feature .button {
   margin-top: 6px;
 }
+
+.page-index .shop-feature > .button {
+  justify-self: start;
+}
 .shop-panel {
   padding-block: 28px;
   border-block: 1px solid var(--color-border);
@@ -2467,8 +2471,8 @@ h1,
     aspect-ratio: 1.1;
   }
 
-  .page-index .shop-feature > img {
-    order: 1;
+  .page-index .shop-feature {
+    grid-template-columns: minmax(0, 1fr) auto;
   }
 }
 
@@ -2540,14 +2544,6 @@ h1,
   box-shadow: var(--panel-shadow);
 }
 
-.service-card__photo {
-  display: block;
-  width: 100%;
-  height: auto;
-  aspect-ratio: 3 / 2;
-  object-fit: cover;
-}
-
 .service-card__body {
   display: flex;
   flex: 1;
@@ -2573,11 +2569,6 @@ h1,
 
 .service-card__body p + .button {
   margin-top: auto;
-}
-
-.service-card .icon {
-  width: 18px;
-  height: 18px;
 }
 
 @media (min-width: 860px) {
