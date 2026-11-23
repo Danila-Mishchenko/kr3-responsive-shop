@@ -313,12 +313,18 @@ main .product__info .product__actions > .button {
 /* ===== Кнопки в одну строку на телефоне =====
    Группы кнопок не переносятся друг под друга, а делят ширину поровну.
    Слово main в начале селекторов нужно, чтобы эти правила перекрывали music.css. */
-@media (max-width: 767px) {
-  /* Главная: «Открыть каталог» и «Занятия в студии» */
-  main .hero__actions {
-    flex-wrap: nowrap;
-    gap: 8px;
-  }
+/* Главная: «Открыть каталог» и «Занятия в студии» */
+main .hero__actions {
+  flex-wrap: nowrap;
+  gap: 8px;
+}
+
+main .hero .hero__actions .button {
+  min-width: 0;
+  text-align: center;
+}
+
+@media (max-width: 1023px) {
 
   main .hero .hero__actions .button {
     display: inline-flex;
@@ -339,6 +345,9 @@ main .product__info .product__actions > .button {
     height: 18px;
   }
 
+}
+
+@media (max-width: 767px) {
   /* Фильтр каталога: «Применить» и «Сбросить» рядом */
   main .filters-form {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -392,6 +401,7 @@ main .product__info .product__actions > .button {
 
   main .compare-controls {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: end;
     gap: 8px;
   }
 

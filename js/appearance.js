@@ -56,7 +56,10 @@ if (headerInner && headerNav) {
   headerNav.addEventListener('click', (event) => {
     if (event.target.closest('a')) setMenu(false);
   });
-  accountButton?.addEventListener('click', () => setMenu(false));
+  accountButton?.addEventListener('click', () => {
+    menuButton.focus();
+    setMenu(false);
+  }, { capture: true });
   document.getElementById('account-dialog')?.addEventListener('close', () => {
     if (!siteHeader.classList.contains('menu-open') && document.activeElement === document.body) {
       menuButton.focus();
