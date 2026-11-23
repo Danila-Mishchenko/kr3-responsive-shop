@@ -23,6 +23,6 @@ await build({
   legalComments: 'linked',
 });
 
-// React, React DOM и Scheduler поставляются с одинаковой лицензией MIT.
+
 const license = await readFile('node_modules/react/LICENSE', 'utf8');
 await appendFile('js/catalog.bundle.js.LEGAL.txt', '\n' + license);
