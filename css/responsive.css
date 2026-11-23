@@ -1,3 +1,4 @@
+/* Адаптивная вёрстка. Базовые стили для телефона, расширения через min-width. */
 img {
   max-width: 100%;
   height: auto;
@@ -172,124 +173,246 @@ img {
   }
 }
 
-/* ===== Мобильное меню (кнопка с тремя полосками) =====
-   Кнопка создаётся скриптом js/appearance.js. Если скрипт не загрузился,
-   у шапки нет класса has-menu и навигация остаётся видимой. */
+/* ===== Меню с тремя полосками (телефон и компьютер) =====
+   Кнопка создаётся скриптом js/appearance.js, он же переносит кнопку входа
+   внутрь меню. Если скрипт не загрузился, у шапки нет класса has-menu
+   и обычная навигация остаётся на месте. */
 .menu-toggle {
   display: none;
 }
 
-@media (max-width: 767px) {
-  /* Шапка остаётся в одну строку: логотип слева, кнопка меню справа. */
-  .site-header.has-menu .site-header__inner {
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 12px;
-  }
+.site-header.has-menu .site-header__inner {
+  position: relative;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
 
-  .site-header.has-menu .site-header__logo {
-    order: 0;
-    flex: 1 1 auto;
-    min-width: 0;
-  }
+.site-header.has-menu .site-header__logo {
+  order: 0;
+  flex: 1 1 auto;
+  min-width: 0;
+}
 
-  .site-header.has-menu .menu-toggle {
-    order: 1;
-    display: inline-flex;
-    flex: none;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-    width: 46px;
-    height: 46px;
-    margin: 0;
-    padding: 0;
-    color: inherit;
-    background: transparent;
-    border: 1px solid currentColor;
-    border-radius: 10px;
-    cursor: pointer;
-  }
+.site-header.has-menu .menu-toggle {
+  order: 1;
+  display: inline-flex;
+  flex: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  width: 46px;
+  height: 46px;
+  margin: 0;
+  padding: 0;
+  color: inherit;
+  background: transparent;
+  border: 1px solid currentColor;
+  border-radius: 10px;
+  cursor: pointer;
+}
 
+.menu-toggle__bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 2px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
   .menu-toggle__bar {
-    display: block;
-    width: 22px;
-    height: 2px;
-    background: currentColor;
-    border-radius: 2px;
+    transition: transform 180ms, opacity 180ms;
   }
+}
 
-  @media (prefers-reduced-motion: no-preference) {
-    .menu-toggle__bar {
-      transition: transform 180ms, opacity 180ms;
-    }
-  }
+/* Три полоски превращаются в крестик, когда меню открыто. */
+.site-header.menu-open .menu-toggle__bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
 
-  /* Три полоски превращаются в крестик, когда меню открыто. */
-  .site-header.menu-open .menu-toggle__bar:nth-child(1) {
-    transform: translateY(7px) rotate(45deg);
-  }
+.site-header.menu-open .menu-toggle__bar:nth-child(2) {
+  opacity: 0;
+}
 
-  .site-header.menu-open .menu-toggle__bar:nth-child(2) {
-    opacity: 0;
-  }
+.site-header.menu-open .menu-toggle__bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
 
-  .site-header.menu-open .menu-toggle__bar:nth-child(3) {
-    transform: translateY(-7px) rotate(-45deg);
-  }
+/* Панель меню: пока меню закрыто, навигации не видно. */
+.site-header.has-menu:not(.menu-open) .site-nav {
+  display: none;
+}
 
-  /* Панель меню на всю ширину шапки: сначала ссылки, потом кнопка входа. */
+.site-header.has-menu .site-nav {
+  order: 3;
+  flex: 1 0 100%;
+}
+
+.site-header.has-menu .site-nav__list {
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  justify-content: flex-start;
+  gap: 4px;
+  margin: 0;
+  padding: 4px 0 0;
+}
+
+.site-header.has-menu .site-nav__item {
+  flex: 0 0 auto;
+  width: 100%;
+}
+
+.site-header.has-menu .site-nav .site-nav__link {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  min-height: 48px;
+  padding: 12px 14px;
+  font-size: 1rem;
+  white-space: normal;
+}
+
+.site-header.has-menu .site-nav .nav-icon {
+  width: 20px;
+  height: 20px;
+  margin: 0;
+}
+
+/* Кнопка входа лежит внутри меню, под ссылками. */
+.site-header.has-menu .site-nav .site-nav__account {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 48px;
+  margin: 8px 0 0;
+  padding: 12px 14px;
+  font-size: 0.95rem;
+}
+
+/* Компьютер: меню открывается карточкой под кнопкой справа. */
+@media (min-width: 768px) {
   .site-header.has-menu .site-nav {
-    order: 3;
-    flex: 1 0 100%;
+    position: absolute;
+    top: calc(100% - 8px);
+    right: var(--space-lg);
+    z-index: 40;
+    flex: none;
+    width: min(340px, calc(100% - 2 * var(--space-lg)));
+    padding: 8px 10px 10px;
+    color: inherit;
+    background: #f3f8fb;
+    border: 1px solid var(--color-border);
+    border-radius: 14px;
+    box-shadow: 0 12px 32px rgb(16 40 64 / 22%);
   }
+}
 
-  .site-header.has-menu:not(.menu-open) .site-nav,
-  .site-header.has-menu:not(.menu-open) .site-header__inner > .site-nav__account {
-    display: none;
-  }
-
-  .site-header.has-menu .site-nav__list {
-    flex-direction: column;
+/* ===== Кнопки в одну строку на телефоне =====
+   Группы кнопок не переносятся друг под друга, а делят ширину поровну.
+   Слово main в начале селекторов нужно, чтобы эти правила перекрывали music.css. */
+@media (max-width: 767px) {
+  /* Главная: «Открыть каталог» и «Занятия в студии» */
+  main .hero__actions {
     flex-wrap: nowrap;
-    align-items: stretch;
-    justify-content: flex-start;
-    gap: 4px;
-    margin: 0;
-    padding: 4px 0 0;
+    gap: 8px;
   }
 
-  .site-header.has-menu .site-nav__item {
-    flex: 0 0 auto;
-    width: 100%;
-  }
-
-  .site-header.has-menu .site-nav .site-nav__link {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 10px;
-    min-height: 48px;
-    padding: 12px 14px;
-    font-size: 1rem;
-    white-space: normal;
-  }
-
-  .site-header.has-menu .site-nav .nav-icon {
-    width: 20px;
-    height: 20px;
-    margin: 0;
-  }
-
-  .site-header.has-menu .site-header__inner > .site-nav__account {
-    order: 4;
-    flex: 1 0 100%;
-    display: flex;
+  main .hero .hero__actions .button {
+    display: inline-flex;
+    flex: 1 1 0;
     align-items: center;
     justify-content: center;
+    gap: 6px;
+    min-width: 0;
+    min-height: 46px;
+    padding: 10px 8px;
+    font-size: 0.875rem;
+    line-height: 1.2;
+    text-align: center;
+  }
+
+  main .hero__actions .button .icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  /* Фильтр каталога: «Применить» и «Сбросить» рядом */
+  main .filters-form {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  main .filters-form > fieldset {
+    grid-column: 1 / -1;
+  }
+
+  /* Карточки каталога: «Подробнее», «Быстрая заявка», «В избранное» */
+  main .instrument-card__actions {
+    flex-wrap: nowrap;
+    gap: 6px;
+  }
+
+  main .instrument-card .instrument-card__actions .button {
+    flex: 1 1 0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    min-width: 0;
+    min-height: 52px;
+    padding: 6px 4px;
+    font-size: 0.7rem;
+    line-height: 1.2;
+    text-align: center;
+  }
+
+  /* Страница товара: «Оставить заявку», «Назад в каталог», «Сравнить» */
+  main .product__info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  main .product__info > :not(.button) {
+    flex: 1 0 100%;
+    margin-block: 0;
+  }
+
+  main .product__info > .button {
+    display: inline-flex;
+    flex: 1 1 0;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
     min-height: 48px;
-    padding: 12px 14px;
-    font-size: 0.95rem;
+    margin: 0;
+    padding: 8px 6px;
+    font-size: 0.8rem;
+    line-height: 1.2;
+    text-align: center;
+  }
+
+  /* Панель «Все инструменты», «Избранное», «Сравнение» */
+  body .catalog-tools {
+    flex-wrap: nowrap;
+    gap: 6px;
+  }
+
+  body .catalog-tools a {
+    flex: 1 1 0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    min-width: 0;
+    min-height: 56px;
+    padding: 8px 4px;
+    font-size: 0.75rem;
+    line-height: 1.2;
+    text-align: center;
   }
 }
