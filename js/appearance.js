@@ -20,8 +20,12 @@ if (headerInner && headerNav) {
   menuButton.setAttribute('aria-controls', headerNav.id);
   menuButton.setAttribute('aria-expanded', 'false');
   menuButton.setAttribute('aria-label', 'Открыть меню');
-  menuButton.innerHTML =
-    '<span class="menu-toggle__bar"></span>'.repeat(3);
+  for (let i = 0; i < 3; i += 1) {
+    const bar = document.createElement('span');
+    bar.className = 'menu-toggle__bar';
+    bar.setAttribute('aria-hidden', 'true');
+    menuButton.append(bar);
+  }
   headerNav.before(menuButton);
   siteHeader.classList.add('has-menu');
 
@@ -53,6 +57,11 @@ if (headerInner && headerNav) {
     if (event.target.closest('a')) setMenu(false);
   });
   accountButton?.addEventListener('click', () => setMenu(false));
+  document.getElementById('account-dialog')?.addEventListener('close', () => {
+    if (!siteHeader.classList.contains('menu-open') && document.activeElement === document.body) {
+      menuButton.focus();
+    }
+  });
 }
 
 // Возврат наверх

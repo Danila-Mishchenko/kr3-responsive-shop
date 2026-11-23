@@ -7,12 +7,12 @@
     <title>Инструмент — Резонанс</title>
     <link rel="icon" href="images/harp-logo.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/responsive.css" />
+    <link rel="stylesheet" href="css/responsive.css?v=2" />
     <link rel="stylesheet" href="css/music.css?v=19" />
     <script defer src="js/data.js?v=4"></script>
     <script defer src="js/store.js?v=4"></script>
     <script defer src="js/services.js?v=4"></script>
-    <script defer src="js/appearance.js?v=3"></script>
+    <script defer src="js/appearance.js?v=4"></script>
   </head>
   <body id="top" class="page-product">
     <header class="site-header">
@@ -170,17 +170,19 @@
           </p>
           <p class="product__price" id="product-price">18 900 ₽</p>
           <p id="product-availability">В наличии</p>
-          <a class="button button--primary" id="product-order" href="order.html?item=acoustic">
-            Оставить заявку
-          </a>
-          <a class="button button--secondary" href="catalog.html">Назад в каталог</a>
-          <a
-            class="button button--secondary"
-            id="product-compare"
-            href="compare.html?first=acoustic"
-          >
-            Сравнить
-          </a>
+          <div class="product__actions">
+            <a class="button button--primary" id="product-order" href="order.html?item=acoustic">
+              Оставить заявку
+            </a>
+            <a class="button button--secondary" href="catalog.html">Назад в каталог</a>
+            <a
+              class="button button--secondary"
+              id="product-compare"
+              href="compare.html?first=acoustic"
+            >
+              Сравнить
+            </a>
+          </div>
         </article>
       </section>
       <section class="section">

@@ -183,7 +183,7 @@ img {
 
 .site-header.has-menu .site-header__inner {
   position: relative;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: center;
   gap: 12px;
 }
@@ -246,70 +246,68 @@ img {
 }
 
 .site-header.has-menu .site-nav {
-  order: 3;
-  flex: 1 0 100%;
+  position: absolute;
+  z-index: 40;
+  inset: calc(100% - 4px) clamp(16px, 4vw, 56px) auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  padding: 8px;
+  overflow-x: auto;
+  color: inherit;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  box-shadow: 0 12px 32px rgb(16 40 64 / 22%);
 }
 
 .site-header.has-menu .site-nav__list {
-  flex-direction: column;
+  flex: 1 0 auto;
+  flex-direction: row;
   flex-wrap: nowrap;
-  align-items: stretch;
-  justify-content: flex-start;
+  justify-content: space-evenly;
   gap: 4px;
   margin: 0;
-  padding: 4px 0 0;
+  padding: 0;
 }
 
 .site-header.has-menu .site-nav__item {
-  flex: 0 0 auto;
-  width: 100%;
+  flex: none;
 }
 
-.site-header.has-menu .site-nav .site-nav__link {
+.site-header.has-menu .site-nav .site-nav__link,
+.site-header.has-menu .site-nav .site-nav__account {
   display: flex;
+  flex: none;
   align-items: center;
-  justify-content: flex-start;
-  gap: 10px;
-  min-height: 48px;
-  padding: 12px 14px;
-  font-size: 1rem;
-  white-space: normal;
+  justify-content: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 8px 10px;
+  font-size: 0.875rem;
+  white-space: nowrap;
 }
 
-.site-header.has-menu .site-nav .nav-icon {
-  width: 20px;
-  height: 20px;
+.site-header.has-menu .site-nav .nav-icon,
+.site-header.has-menu .site-nav .site-nav__account .icon {
+  display: inline-block;
+  width: 17px;
+  height: 17px;
   margin: 0;
 }
 
-/* Кнопка входа лежит внутри меню, под ссылками. */
-.site-header.has-menu .site-nav .site-nav__account {
+.product__actions {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  min-height: 48px;
-  margin: 8px 0 0;
-  padding: 12px 14px;
-  font-size: 0.95rem;
+  align-items: stretch;
+  gap: 8px;
 }
 
-/* Компьютер: меню открывается карточкой под кнопкой справа. */
-@media (min-width: 768px) {
-  .site-header.has-menu .site-nav {
-    position: absolute;
-    top: calc(100% - 8px);
-    right: var(--space-lg);
-    z-index: 40;
-    flex: none;
-    width: min(340px, calc(100% - 2 * var(--space-lg)));
-    padding: 8px 10px 10px;
-    color: inherit;
-    background: #f3f8fb;
-    border: 1px solid var(--color-border);
-    border-radius: 14px;
-    box-shadow: 0 12px 32px rgb(16 40 64 / 22%);
-  }
+main .product__info .product__actions > .button {
+  flex: 1 1 0;
+  min-width: 0;
+  margin: 0;
+  text-align: center;
 }
 
 /* ===== Кнопки в одну строку на телефоне =====
@@ -370,30 +368,36 @@ img {
     text-align: center;
   }
 
-  /* Страница товара: «Оставить заявку», «Назад в каталог», «Сравнить» */
-  main .product__info {
-    display: flex;
-    flex-wrap: wrap;
+  /* Страница товара, сравнение и кнопки диалогов */
+  main .product__info .product__actions > .button,
+  body .service-tabs > .button,
+  body .order-dialog .order-form__actions > .button {
+    min-width: 0;
+    padding-inline: 7px;
+    font-size: 0.8rem;
+    text-align: center;
+  }
+
+  body .service-tabs,
+  body .order-dialog .order-form__actions {
+    flex-wrap: nowrap;
     gap: 8px;
   }
 
-  main .product__info > :not(.button) {
-    flex: 1 0 100%;
-    margin-block: 0;
+  body .service-tabs > .button,
+  body .order-dialog .order-form__actions > .button {
+    flex: 1 1 0;
+    width: auto;
   }
 
-  main .product__info > .button {
-    display: inline-flex;
-    flex: 1 1 0;
-    align-items: center;
-    justify-content: center;
+  main .compare-controls {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  main .compare-controls label,
+  main .compare-controls select {
     min-width: 0;
-    min-height: 48px;
-    margin: 0;
-    padding: 8px 6px;
-    font-size: 0.8rem;
-    line-height: 1.2;
-    text-align: center;
   }
 
   /* Панель «Все инструменты», «Избранное», «Сравнение» */
