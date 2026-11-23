@@ -430,3 +430,38 @@ main .hero .hero__actions .button {
     text-align: center;
   }
 }
+/* Подвал на телефоне */
+@media (max-width: 767px) {
+  .site-footer .site-footer__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+    gap: 20px 12px;
+  }
+
+  .site-footer__links {
+    grid-column: 1 / -1;
+  }
+
+  .site-footer__links .social-links,
+  .site-footer__links ul {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+    gap: 12px;
+  }
+
+  .site-footer .site-footer__grid a,
+  .site-footer .contact-row {
+    gap: 7px;
+    overflow-wrap: anywhere;
+  }
+
+  .site-footer__grid .icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .site-footer .contact-row > div {
+    min-width: 0;
+  }
+}
